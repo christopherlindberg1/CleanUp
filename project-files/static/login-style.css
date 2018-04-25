@@ -1,6 +1,6 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
-form {border: 3px solid #f1f1f1;}
+/*form {border: 3px solid #f1f1f1;}*/ /* Kan ersätta denna med något annat? (ser konstigt ut nu när jag har uppdaterat HTML-filen) */
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -26,7 +26,7 @@ button:hover {
     opacity: 0.8;
 }
 
-button a {
+button > a.login-btn {
     color: #fff;
 }
 

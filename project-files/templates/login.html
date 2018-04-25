@@ -3,35 +3,34 @@
 {% block body %}
 
 	<main>
-		<article>
-			<section class="container-fluid lighter-gray">
+	
+		<section class="container-fluid">
+			<div class="container">
+				<h1>Logga in!</h1>
+		        <p>Fyll i nedanstående rutor för att logga in</p>
+			</div>
+			<hr>
+		</section>
+		
+		<section class="container-fluid">
+			<div class="container">
 				<form action="/login" method="POST">
-						<div class="container">
-							<h1>Logga in!</h1>
-			        <p>Fyll i nedanstående rutor för att logga in</p>
-						</div>
-							<hr>
-			</section>
-		</article>
-		<article>
-				<div class="container">
-							<label for="e-mail"><b>E-mailadress</b></label>
-							<input type="text" placeholder="Skriv din e-mailadress här..." name="e-mail" required>
+					<label for="e-mail"><b>E-mailadress</b></label>
+					<input type="text" placeholder="Skriv din e-mailadress här..." name="e-mail" required>
 
-							<label for="password"><b>Lösenord</b></label>
-							<input type="password" placeholder="Skriv lösenord här..." name="password" required>
+					<label for="password"><b>Lösenord</b></label>
+					<input type="password" placeholder="Skriv lösenord här..." name="password" required>
 
-							<button type="submit"><a href="/">Logga in!</button>
-							<label>
-								<input type="checkbox" checked="checked" name="komihagmig">Kom ihåg mig
-							</label>
-						</div>
+					<button type="submit"><a href="/" class="login-btn">Logga in!</a></button>
+					<label>
+						<input type="checkbox" checked="checked" name="komihagmig"> Kom ihåg mig
+					</label>
 
-						<div class="container" style="background-color:#f1f1f1">
-							<button type="button"><a href="/" class="avbrytbutton">Avbryt</a></button>
-							<span class="password"><a href="/forgot">Glömt ditt lösenord?</a></span>
-						</div>
-					</form>
+					<button type="button"><a href="/" class="avbrytbutton login-btn">Avbryt</a></button>
+					<span class="password"><a href="/forgot">Glömt ditt lösenord?</a></span><!-- FIXA FÄRG PÅ LÄNKEN -->
+				</form>
+			</div>
+		</section>
 
 	</main>
 
