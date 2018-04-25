@@ -1,12 +1,9 @@
-/*form {border: 3px solid #f1f1f1;}*/ /* Kan ersätta denna med något annat? (ser konstigt ut nu när jag har uppdaterat HTML-filen) */
-
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 
 button {
@@ -24,13 +21,12 @@ button:hover {
     opacity: 0.8;
 }
 
-<<<<<<< HEAD
-button > a {
+/*button > a {
   color: #FFFFFF;
-=======
+}*/
+
 button > a.login-btn {
     color: #fff;
->>>>>>> 7d08caf6f4a175526f55572f67a81a4a56a671a8
 }
 
 .cancelbtn {
