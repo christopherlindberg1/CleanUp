@@ -181,10 +181,6 @@ div.to-do-list {
 	box-shadow: 0px 0px 4px #ddd;
 	}
 
-a {
-	color: #FFFFFF;
-}
-
 a.to-do-list-item {
 	padding: 0.5em 1em;
 	/*background-color: #fcfcfc;*/
@@ -245,6 +241,10 @@ footer p.text-center {
 	/*padding: 2em 0;*/
 	margin-bottom: 0;
 	font-size: 0.9em;
+}
+
+a {
+	color: #FFFFFF;
 }
 
 /****** MEDIA QUERIES ******/
