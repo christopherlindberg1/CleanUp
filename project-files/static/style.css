@@ -87,6 +87,11 @@ button.home {
 	margin: 2em auto 0;
 }
 
+/***** VARFÖR FUNKAR INTE DENNA REGELN?? (VILL ERSÄTTA DE TVÅ REGLERNA UNDER) *****/
+/*section div.container-content {
+	width: 80%;
+}*/
+
 h3.home {
 	width: 80%;
 	margin: auto;
@@ -98,14 +103,6 @@ div.row.home {
 	margin: 0 auto;
 }
 
-.flex-row {
-	display: flex;
-}
-
-.flex-row-col {
-	-webkit-align-items: center;
-    flex-align: center;
-}
 
 /* De fyra nedanstående reglerna är lite klyddiga. Bättre alternativ? */
 div.row.home div.left-col-p {
@@ -301,6 +298,11 @@ footer p.text-center {
 		font-size: 3em;
 	}
 
+	/*div.container-content {
+		width: 100%;
+	}*/
+
+	
 	div.row.home {
 		width: 100%;
 		padding-bottom: 0;
@@ -341,13 +343,5 @@ footer p.text-center {
 	h3.home {
 		width: 90%;
 	}
-
-}
-
-
-/* xl bootstrap */
-@media (min-width: 1200px) {
-
-
 
 }
