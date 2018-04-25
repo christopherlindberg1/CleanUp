@@ -3,13 +3,13 @@
 {% block body %}
 
 	<main>
-	
 		<section class="container-fluid">
 			<div class="container container-smaller">
-				<h1>Logga in!</h1>
-		        <p>Fyll i nedanstående rutor för att logga in</p>
+				<h1 class="display-4">Logga in!</h1>
+		        <p class="lead">Fyll i nedanstående rutor för att logga in</p>
+		        <hr>
 			</div>
-			<hr>
+			
 		</section>
 		
 		<section class="container-fluid">
@@ -20,15 +20,15 @@
 
 					<label for="password"><b>Lösenord</b></label>
 					<input type="password" placeholder="Skriv lösenord här..." name="password" required>
+					<span class="password"><a href="/forgot">Glömt ditt lösenord?</a></span>
 
-					<button type="submit"><a href="/" class="login-btn">Logga in!</a></button>
+					<button type="submit" class="login-btn"><a href="/" class="login-btn">Logga in!</a></button>
 					<label>
 						<input type="checkbox" name="komihagmig"> Kom ihåg mig
 					</label>
 
 					<!-- <button type="button"><a href="/" class="avbrytbutton login-btn">Avbryt</a></button> --> <!-- Bör kanske inte ha en så stor avbryt-knapp, eller en knapp för det alls? -->
 
-					<span class="password"><a href="/forgot">Glömt ditt lösenord?</a></span>
 				</form>
 			</div>
 		</section>

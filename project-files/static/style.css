@@ -7,13 +7,12 @@ body {
 }
 
 nav {
-	margin-bottom: 100px;
 	background-color: #222;
 }
 
-/*ul {
-	list-style-type: none;
-}*/
+nav > div > ul.navbar-nav{
+	
+}
 
 .clearfix {
 	margin: 3.5em 0 0;
@@ -35,14 +34,6 @@ nav {
 	height: 4em;
 }
 
-/*.width-80 {
-	width: 80%;
-}
-
-.width-90 {
-	width: 90%;
-}*/
-
 .light-gray {
 	background-color: #eee;
 }
@@ -51,18 +42,13 @@ nav {
 	background-color: #f5f5f5;
 }
 
-.display-5 {
-	font-weight: ;
-}
-
 .jumbotron {
 	background-color: #fff;
 	margin-bottom: 0;
 }
 
 div.container.container-smaller {
-	max-width: 65%;
-	/*background-color: #faa;*/
+	width: 70%;	
 }
 
 main {
@@ -87,6 +73,10 @@ section p {
 	text-align: justify;
 }
 
+h2.display-4 {
+	font-size: 3.5em; /* 3.5em är default för klassen "display-4"*/
+}
+
 a.h3-link {
 	color: inherit;
 	display: inline-block;
@@ -100,6 +90,10 @@ a.h3-link:hover {
 
 a.h3-link:active {
 	text-decoration: underline;
+}
+
+p.lead {
+	font-size: 18px;
 }
 
 .btn-primary {
@@ -244,6 +238,10 @@ p.item-not-done {
 
 /***** calendar.html *****/
 /* Month header */
+section.calendar { /*Kan fixa någon bakgrundsfärg som sträcker sig från kant till kant */
+
+}
+
 .month {
     padding: 70px 25px;
     width: 100%;
@@ -329,31 +327,27 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
 }
 
-button {
+button.login-btn { /* Denna klassen används även till register.html */
     background-color: #007bff;
-    border-color: #007bff;
+    border-radius: 3px;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    transition: all 0.1s;
 }
 
-button:hover {
+button.login-btn:hover {
     opacity: 0.8;
 }
 
-button > a.login-btn {
+button.login-btn > a {
     color: #fff;
 }
 
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #007bff;
-}
-
+/*** Vad gör de tre reglerna nedan? ***/
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -376,6 +370,7 @@ span.psw {
 
 @media screen and (max-width: 300px) {
     
+    /* Vad används dessa till? */
     span.psw {
        display: block;
        float: none;
@@ -406,6 +401,14 @@ span.psw {
 		font-size: 2.25em;
 	}
 
+	h2.display-4 {
+		font-size: 2.25em;
+	}
+
+	div.container.container-smaller {
+		width: 100%;	
+	}
+
 	img.image-home {
 		display: none;
 	}
@@ -431,7 +434,7 @@ span.psw {
 
 
 /* sm bootstrap */
-@media (min-width: 577px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px) {
 
 	div.jumbotron.home div.container p {
 		font-size: 1.25em;
@@ -439,6 +442,11 @@ span.psw {
 
 	div.jumbotron h1 {
 		font-size: 3em;
+	}
+
+	div.container.container-smaller {
+		width: 100%;
+		padding: 0;
 	}
 
 	/*div.container-content {
@@ -454,14 +462,22 @@ span.psw {
 		width: 100%;
 	}
 
+	h2.display-4 {
+		font-size: 2.5em;
+	}
+
 }
 
 
 /* md bootstrap */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 992px) {
 
 	div.jumbotron.home div.container p {
 		font-size: 1.35em;
+	}
+
+	div.container.container-smaller {
+		width: 85%;	
 	}
 
 	div.row.home {
@@ -478,13 +494,11 @@ span.psw {
 /* lg bootstrap */
 @media (min-width: 992px) and (max-width: 1199px) {
 
-	div.row.home {
-		width: 90%;
+	div.container.container-smaller {
+		width: 80%;	
 	}
 
-	h3.home {
-		width: 90%;
-	}
+	
 
 }
 
