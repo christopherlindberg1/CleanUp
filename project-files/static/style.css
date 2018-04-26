@@ -11,7 +11,12 @@ nav {
 }
 
 nav > div > ul.navbar-nav{
-	background-color: green;
+	/*background-color: green;*/ /* Använder denna för att testa */
+	width: 100%;
+}
+
+li.nav-item-right {
+	float: right;
 }
 
 .clearfix {
@@ -40,6 +45,10 @@ nav > div > ul.navbar-nav{
 
 .lighter-gray {
 	background-color: #f5f5f5;
+}
+
+.display-5 {
+	font-weight: 300;
 }
 
 .jumbotron {
@@ -367,6 +376,22 @@ span.psw {
 /***** slut login.html *****/
 
 
+/***** my_home.html *****/
+div.room {
+	background-color: #f9f9f9;
+	box-shadow: 0px 0px 4px #bbb;
+	padding: 1em;
+	margin: 0;
+	margin-bottom: 2em;
+	font-weight: 300;
+}
+
+ul.furniture-list {
+	list-style-type: none;
+	padding: 0
+}
+
+
 /*********** MEDIA QUERIES ***********/
 
 
@@ -430,6 +455,10 @@ span.psw {
 
 	div.row.home div.right-col-p {
 		padding-left: 0;
+	}
+
+	section p {
+		text-align: left;
 	}
 
 }
