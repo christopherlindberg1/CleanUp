@@ -11,7 +11,12 @@ nav {
 }
 
 nav > div > ul.navbar-nav{
-	background-color: green;
+	/*background-color: green;*/ /* Använder denna för att testa */
+	width: 100%;
+}
+
+li.nav-item-right {
+	float: right;
 }
 
 .clearfix {
