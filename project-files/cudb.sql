@@ -5,10 +5,10 @@ create database cudb;
 \c cudb;
 
 	-- Tabell med två kolumner; användarnamn och lösenord.
-CREATE TABLE password ( 
+CREATE TABLE password (
  	--Ser till att användarnamnet är unikt.
-	username TEXT PRIMARY KEY,	
- 	userpassword TEXT
+	email TEXT PRIMARY KEY,	
+ 	password TEXT
 );
 
 	--Varje kodrad motsvarar en rad i tabellen "password". Dvs varje användarnamn skall höra ihop med ett lösenord.
@@ -88,7 +88,7 @@ Insert INTO items values
 	('tavla', 'alla')
 ;
 
-	-- Tabell med två kolumner; föremål och föremålets syfte. 
+	-- Tabell med två kolumner; föremål och föremålets syfte.
 CREATE TABLE cleaning_items (
 	name TEXT,
 	utility TEXT
@@ -96,7 +96,7 @@ CREATE TABLE cleaning_items (
 
 	--Varje kodrad motsvarar en rad i tabellen "cleaning_items". Dvs varje föremål skall höra ihop med ett syfte.
 Insert INTO cleaning_items values
-	-- Städverktyg & städmedel 
+	-- Städverktyg & städmedel
 	('kvast', 'utility'),
 	('toalettborste', 'utility'),
 	('stålull', 'utility'),
@@ -116,4 +116,3 @@ Insert INTO cleaning_items values
 	('handsprit', 'utility'),
 	('rengöringsmedel', 'utility')
 ;
-

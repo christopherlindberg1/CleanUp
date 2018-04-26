@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    articles = article_collection.get_articles()
-    return render_template("index.html", title="Start", articles=articles, author="Christopher")
+    accounts = account_collection.get_accounts()
+    return render_template("index.html", title="Start", accounts=accounts, author="Christopher")
 
 
 @app.route("/to_do_list.html/")
