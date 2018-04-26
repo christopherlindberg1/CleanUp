@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", title="Start", author="Christopher")
+    articles = article_collection.get_articles()
+    return render_template("index.html", title="Start", articles=articles author="Christopher")
 
 
 @app.route("/to_do_list.html/")
@@ -16,7 +17,7 @@ def to_do_list():
 
 @app.route("/calendar.html/")
 def calendar():
-    return render_template("calendar.html", title="Kalender")
+    return render_template("calendar.html", title="Kalender", author="Martin")
 
 
 @app.route("/cleaning_tips.html/")
@@ -26,7 +27,7 @@ def cleaning_tips():
 
 @app.route("/login.html/")
 def login():
-    return render_template("login.html", title="Logga in")
+    return render_template("login.html", title="Logga in", author="Martin")
 
 
 @app.route("/my_account.html/")
@@ -46,7 +47,7 @@ def serve_static_files(path):
 
 @app.route("/register.html/")
 def register():
-    return render_template("register.html", title="Registrera")
+    return render_template("register.html", title="Registrera", author="Martin")
 
 
 
