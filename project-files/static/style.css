@@ -437,6 +437,10 @@ span.psw {
 		padding-left: 0;
 	}
 
+	section p {
+		text-align: left;
+	}
+
 }
 
 
