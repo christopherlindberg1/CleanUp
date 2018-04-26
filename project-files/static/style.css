@@ -11,7 +11,7 @@ nav {
 }
 
 nav > div > ul.navbar-nav{
-	
+	background-color: green;
 }
 
 .clearfix {
