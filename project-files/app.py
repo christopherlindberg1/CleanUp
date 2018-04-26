@@ -1,19 +1,13 @@
 from flask import Flask, render_template
-import account_collection
+'''import account_collection'''
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-<<<<<<< HEAD
-    accounts = account_collection.get_accounts()
-    return render_template("index.html", title="Start", accounts=accounts, author="Christopher")
-=======
-    """articles = article_collection.get_articles()"""
-    return render_template("index.html", title="Start", author="Christopher")
->>>>>>> 5fd8c8b5c2b6037fd66250f57757abf868c04269
-
+    '''accounts = account_collection.get_accounts()'''
+    return render_template("index.html", title="Start" '''accounts=accounts''', author="Christopher")
 
 @app.route("/to_do_list.html/")
 def to_do_list():
