@@ -2,34 +2,35 @@
 
 {% block body %}
 
-	<main>
-    <form action="/register">
-      <section class="container-fluid lighter-gray">
-        <div class="container">
-          <h1>Skapa ett konto</h1>
-          <p>Fyll i detta formulär för att skapa ett konto</p>
-          <hr>
-        </div>
-      </section>
-      <article>
-        <div class="container">
-		        <label for="e-mail"><b>E-mailadress</b></label>
-		        <input type="text" placeholder="Fyll i din e-mail här" name="email" required>
+    <main>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <h1 class="display-4">Skapa ett konto</h1>
+                <p class="lead">Fyll i detta formulär för att skapa ett konto</p>
+                <hr>
+            </div>
+        </section>
 
-		        <label for="password"><b>Lösenord</b></label>
-		        <input type="password" placeholder="Fyll i önskat lösenord här" name="password" required>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <form action="/register" method="POST">
+                    <label for="e-mail"><b>E-mailadress</b></label>
+                    <input type="text" id="e-mail" placeholder="Fyll i din e-mail här" name="email" required>
 
-		        <label for="password-repeat"><b>Upprepa lösenordet</b></label>
-		        	<input type="password" placeholder="Upprepa lösenordet här" name="password-repeat" required>
-		        <hr>
+                    <label for="password"><b>Lösenord</b></label>
+                    <input type="password" id="password" placeholder="Fyll i önskat lösenord här" name="password" required>
 
-		        <p>Jag har läst och godkänt våra <a href="#">Terms & Conditions.</a></p>
-		        <button type="submit" class="registerbtn">Registrera!</button>
-      </div>
-      <div class="container signin">
-        <p>Har du redan registrerat ett konto? <a href="/login.html/">Logga in!</a></p>
-      </div>
-    </form>
-  </main>
+                    <label for="password-repeat"><b>Upprepa lösenordet</b></label>
+                    <input type="password" id="password-repeat" placeholder="Upprepa lösenordet här" name="password-repeat" required>
+                    <hr>
+
+                    <p>Jag har läst och godkänt våra <a href="#">Terms & Conditions.</a></p>
+                    <button type="submit" class="login-btn">Registrera!</button>
+
+                    <p>Har du redan registrerat ett konto? <a href="/login.html/">Logga in!</a></p>
+                </form>
+            </div>
+        </form>
+    </main>
 
 {% endblock %}

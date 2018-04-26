@@ -7,12 +7,11 @@ body {
 }
 
 nav {
-	margin-bottom: 100px;
 	background-color: #222;
 }
 
-ul {
-	list-style-type: none;
+nav > div > ul.navbar-nav{
+	
 }
 
 .clearfix {
@@ -35,25 +34,111 @@ ul {
 	height: 4em;
 }
 
-.width-80 {
-	width: 80%;
+.light-gray {
+	background-color: #eee;
 }
 
-.width-90 {
-	width: 90%;
+.lighter-gray {
+	background-color: #f5f5f5;
 }
-
 
 .jumbotron {
 	background-color: #fff;
 	margin-bottom: 0;
 }
 
+div.container.container-smaller {
+	width: 70%;	
+}
+
 main {
 
 }
 
-/***** startsidan *****/
+section {
+	padding: 2em 0em;
+}
+
+section h2 {
+	font-weight: 400;
+}
+
+section h3 {
+	padding-top: 0.5em;
+	font-weight: 400;
+	font-size: 2em;
+}
+
+section p {
+	text-align: justify;
+}
+
+h2.display-4 {
+	font-size: 3.5em; /* 3.5em är default för klassen "display-4"*/
+}
+
+a.h3-link {
+	color: inherit;
+	display: inline-block;
+	color: #00c;
+}
+
+a.h3-link:hover {
+	text-decoration: none;
+	color: #22f;
+}
+
+a.h3-link:active {
+	text-decoration: underline;
+}
+
+p.lead {
+	font-size: 18px;
+}
+
+.btn-primary {
+	padding: 7px 18px;
+}
+
+footer {
+	background-color: #333;
+	padding: 1em 0 0;
+}
+
+ul.foot-col {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+ul.foot-col > li > a {
+	color: #ccc;
+}
+
+ul.foot-col > li > a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+ul.foot-col > li > a:active {
+	text-decoration: underline;
+}
+
+footer div.copy-row {
+	margin-top: 1em;
+	height: 3em;
+	line-height: 3em;
+	background-color: #222;
+}
+
+footer p.text-center {
+	color: #999;
+	margin-bottom: 0;
+	font-size: 0.9em;
+}
+
+
+/***** index.html *****/
 h1.home {
 	padding-bottom: 0.25em;
 	text-align: center;
@@ -89,19 +174,9 @@ button.home {
 	margin: 2em auto 0;
 }
 
-/***** VARFÖR FUNKAR INTE DENNA REGELN?? (VILL ERSÄTTA DE TVÅ REGLERNA UNDER) *****/
-/*section div.container-content {
-	width: 80%;
-}*/
-
-h3.home {
-	width: 80%;
-	margin: auto;
-}
 
 div.row.home {
 	padding: 0.5em 0 1.5em;
-	width: 80%;
 	margin: 0 auto;
 }
 
@@ -126,54 +201,10 @@ div.row.home div.right-col-img {
 div.home img {
 	width: 100%;
 }
-/***** slut startsidan *****/
+/***** slut index.html *****/
 
-section {
-	padding: 2em 0em;
-}
 
-.light-gray {
-	background-color: #eee;
-}
-
-.lighter-gray {
-	background-color: #f5f5f5;
-}
-
-section h2 {
-	font-weight: 400;
-}
-
-section h3 {
-	padding-top: 0.5em;
-	font-weight: 400;
-	font-size: 2em;
-}
-
-a.h3-link {
-	color: inherit;
-	display: inline-block;
-	color: #00c;
-}
-
-a.h3-link:hover {
-	text-decoration: none;
-	color: #22f;
-}
-
-a.h3-link:active {
-	text-decoration: underline;
-}
-
-section p {
-	text-align: justify;
-}
-
-.btn-primary {
-	padding: 7px 18px;
-}
-
-/***** to do-sidan *****/
+/***** to_do_list.html *****/
 div.to-do-list {
 	font-size: 0.9rem;
 	max-width: 800px;
@@ -183,7 +214,6 @@ div.to-do-list {
 
 a.to-do-list-item {
 	padding: 0.5em 1em;
-	/*background-color: #fcfcfc;*/
 }
 
 div.to-do h5 {
@@ -203,52 +233,156 @@ p.item-not-done {
 	padding: 0 5px;
 	border-radius: 4px;
 }
-/***** slut to do-sidan *****/
+/***** slut to_do_list.html *****/
 
-footer {
-	background-color: #333;
-	padding: 1em 0 0;
+
+/***** calendar.html *****/
+/* Month header */
+section.calendar { /*Kan fixa någon bakgrundsfärg som sträcker sig från kant till kant */
+
 }
 
-ul.foot-col {
-	list-style-type: none;
-	margin: 0;
-	padding: 10px 0;
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
 }
 
-ul.foot-col > li > a {
-	color: #ccc;
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
 }
 
-ul.foot-col > li > a:hover {
-	color: #fff;
-	text-decoration: none;
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
-ul.foot-col > li > a:active {
-	text-decoration: underline;
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
 }
 
-footer div.copy-row {
-	margin-top: 1em;
-	height: 3em;
-	line-height: 3em;
-	background-color: #222;
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
 }
 
-footer p.text-center {
-	color: #999;
-	/*padding: 2em 0;*/
-	margin-bottom: 0;
-	font-size: 0.9em;
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
 }
 
-a {
-	color: #FFFFFF;
+.weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
 }
 
-/****** MEDIA QUERIES ******/
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
 
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #777;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+.year-size {
+	font-size: 18px;
+}
+/***** slut calendar.html *****/
+
+
+/***** login.html *****/
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+button.login-btn { /* Denna klassen används även till register.html */
+    background-color: #007bff;
+    border-radius: 3px;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.1s;
+}
+
+button.login-btn:hover {
+    opacity: 0.8;
+}
+
+button.login-btn > a {
+    color: #fff;
+}
+
+/*** Vad gör de tre reglerna nedan? ***/
+/***De finns till för när vi infogar login-bilden om vi gör det.***/
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+/***** slut login.html *****/
+
+
+/*********** MEDIA QUERIES ***********/
+
+
+@media screen and (max-width: 300px) {
+    
+    /* Vad används dessa till? */
+    span.psw {
+       display: block;
+       float: none;
+    }
+
+    .cancelbtn {
+       width: 100%;
+    }
+
+}
 
 /*xs bootstrap */
 @media (max-width: 576px) {
@@ -267,6 +401,14 @@ a {
 
 	div.jumbotron h1 {
 		font-size: 2.25em;
+	}
+
+	h2.display-4 {
+		font-size: 2.25em;
+	}
+
+	div.container.container-smaller {
+		width: 100%;	
 	}
 
 	img.image-home {
@@ -294,7 +436,7 @@ a {
 
 
 /* sm bootstrap */
-@media (min-width: 577px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px) {
 
 	div.jumbotron.home div.container p {
 		font-size: 1.25em;
@@ -304,10 +446,14 @@ a {
 		font-size: 3em;
 	}
 
+	div.container.container-smaller {
+		width: 100%;
+		padding: 0;
+	}
+
 	/*div.container-content {
 		width: 100%;
 	}*/
-
 
 	div.row.home {
 		width: 100%;
@@ -318,14 +464,22 @@ a {
 		width: 100%;
 	}
 
+	h2.display-4 {
+		font-size: 2.5em;
+	}
+
 }
 
 
 /* md bootstrap */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 992px) {
 
 	div.jumbotron.home div.container p {
 		font-size: 1.35em;
+	}
+
+	div.container.container-smaller {
+		width: 85%;	
 	}
 
 	div.row.home {
@@ -342,15 +496,12 @@ a {
 /* lg bootstrap */
 @media (min-width: 992px) and (max-width: 1199px) {
 
-	div.row.home {
-		width: 90%;
+	div.container.container-smaller {
+		width: 80%;	
 	}
 
-	h3.home {
-		width: 90%;
-	}
+	
 
-<<<<<<< HEAD
 }
 
 
@@ -360,6 +511,3 @@ a {
 
 
 }
-=======
-}
->>>>>>> 3e4ae2d5a8ea18bdb2878820aafb44503c781c80
