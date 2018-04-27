@@ -386,10 +386,16 @@ div.room {
 	font-weight: 300;
 }
 
+div.room > button {
+	margin: 0;
+}
+
 ul.furniture-list {
 	list-style-type: none;
 	padding: 0
 }
+
+
 
 
 /*********** MEDIA QUERIES ***********/
