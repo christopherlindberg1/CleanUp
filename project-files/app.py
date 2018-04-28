@@ -36,7 +36,7 @@ def account():
 
 @app.route("/my_home.html/")
 def my_home():
-    return render_template("my_home.html", title="Min bostad")
+    return render_template("my_home.html", title="Min bostad", author="Christopher")
 
 
 @app.route("/static/<path:path>")
