@@ -7,11 +7,11 @@ body {
 }
 
 nav {
-	background-color: #222;
+	background-color: #111;
 }
 
-nav > div > ul.navbar-nav{
-	width: 100%;
+nav > a {
+	color: #999;
 }
 
 li.nav-item-right {
@@ -60,6 +60,11 @@ li.nav-item-right {
 	font-weight: 300;
 }
 
+.light {
+	font-weight: 300;
+	font-size: 18px;
+}
+
 .jumbotron {
 	background-color: #fff;
 	margin-bottom: 0;
@@ -91,21 +96,6 @@ section p {
 	text-align: justify;
 }
 
-a.h3-link {
-	color: inherit;
-	display: inline-block;
-	color: #00c;
-}
-
-a.h3-link:hover {
-	text-decoration: none;
-	color: #22f;
-}
-
-a.h3-link:active {
-	text-decoration: underline;
-}
-
 p.lead {
 	font-size: 18px;
 }
@@ -115,7 +105,7 @@ p.lead {
 }
 
 footer {
-	background-color: #333;
+	background-color: #222;
 	padding: 1em 0 0;
 }
 
@@ -142,7 +132,7 @@ footer div.copy-row {
 	margin-top: 1em;
 	height: 3em;
 	line-height: 3em;
-	background-color: #222;
+	background-color: #111;
 }
 
 footer p.text-center {
@@ -339,28 +329,24 @@ input[type=text], input[type=password] {
 }
 
 button.login-btn { /* Denna klassen används även till register.html */
-    background-color: #007bff;
     border-radius: 3px;
-    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
-    transition: all 0.1s;
 }
 
-button.login-btn:hover {
+/* Tog bort denna så att hover-effekten är densamma på alla knappar */
+/*button.login-btn:hover {
     opacity: 0.8;
-}
+}*/
 
 button.login-btn > a {
     color: #fff;
 }
 
-/*** Vad gör de tre reglerna nedan? ***/
-/***De finns till för när vi infogar login-bilden om vi gör det.***/
-
+/*** Används inte än men låt stå kvar ***/
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -399,10 +385,19 @@ ul.furniture-list {
 
 h3.display-5.underline {
 	margin-bottom: 0.5em;
-	padding-bottom: 0.25em;
+	padding: 0 0 0.25em;
 	border-bottom: 3px solid rgba(100,100,100,0.2);
-	
 }
+
+ul.house-info-list {
+	list-style-type: none;
+	padding: 0em 0.5em 0.5em;
+}
+
+ul.house-info-list {
+	font-size: 1.1em;
+}
+
 /***** slut my_home.html *****/
 
 
