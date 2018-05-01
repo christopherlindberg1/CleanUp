@@ -24,6 +24,11 @@ def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
 
+@app.route("/register.html/")
+def register():
+    return render_template("register.html", title="Registrera", author="Martin")
+
+
 @app.route("/login.html/")
 def login():
     return render_template("login.html", title="Logga in", author="Martin")
@@ -42,11 +47,6 @@ def my_home():
 @app.route("/static/<path:path>")
 def serve_static_files(path):
     return send_from_directory("static", path)
-
-
-@app.route("/register.html/")
-def register():
-    return render_template("register.html", title="Registrera", author="Martin")
 
 
 
