@@ -5,14 +5,14 @@ create database cudb;
 \c cudb;
 
 	-- Tabell med två kolumner; användarnamn och lösenord.
-CREATE TABLE password (
+CREATE TABLE user_password (
  	--Ser till att användarnamnet är unikt.
-	email TEXT PRIMARY KEY,	
- 	password TEXT
+	email VARCHAR(100) PRIMARY KEY,	
+ 	password VARCHAR(100)
 );
 
-	--Varje kodrad motsvarar en rad i tabellen "password". Dvs varje användarnamn skall höra ihop med ett lösenord.
-Insert INTO password values
+	--Varje kodrad motsvarar en rad i tabellen "user_password". Dvs varje användarnamn skall höra ihop med ett lösenord.
+Insert INTO user_password values
 	('test@gmail.com', 'lösenord1'),
 	('test@hotmail.com', 'lösenord1'),
 	('TESTING@gmail.com', 'lösen')
