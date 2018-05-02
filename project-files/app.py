@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 '''import account_collection'''
+from os import listdir
 
 app = Flask(__name__)
 
@@ -7,7 +8,9 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     '''accounts = account_collection.get_accounts()'''
-    return render_template("index.html", title="Start" '''accounts=accounts''', author="Christopher")
+    '''accounts=accounts # Tog bort denna då den ställde till med problem i fliken i webbläsaren '''
+    return render_template("index.html", title="Start", author="Christopher")
+
 
 @app.route("/to_do_list.html/")
 def to_do_list():
@@ -22,6 +25,14 @@ def calendar():
 @app.route("/cleaning_tips.html/")
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
+
+
+@app.route("/cleaning_tips/<room>.html")
+def rooms(room):
+    rooms = listdir("static/cleaning_articles")
+
+
+    return render_template("room.html", rooms=rooms)
 
 
 @app.route("/register.html/")
