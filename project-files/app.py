@@ -1,10 +1,21 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
 from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from passlib.hash import sha256_crypt
 import calendar
 '''import account_collection'''
 
 app = Flask(__name__)
 
+#Config MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'cudb'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+#init MYSQL
+mysql = MySQL(app)
 
 @app.route("/")
 def index():
@@ -25,14 +36,38 @@ def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
 
-@app.route("/register.html/")
+@app.route("/register.html/", methods=["GET", "POST"])
 def register():
-    return render_template("register.html", title="Registrera", author="Martin")
+    form = Registrera(request.form)
+    if request.method == "POST" and form.validate():
+        email = form.email.data
+        password = sha256_crypt.encrypt(str(form.password.data))
+        
+        # Create cursor
+        cur = mysql.connection.cursor()
+        
+        # Execute query 
+        cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
+        
+        # Commit to DB
+        mysql.connection.commit()
+        
+        # Close connection
+        cur.close()
+        
+        # Registration message with categories
+        flash('Du är nu registrerad och kan logga in', 'success')
+        
+        redirect(url_for('index'))
+        
+        return render_template("register.html", form = form)
+    
+    return render_template("register.html", form=form, title="Registrera", author="Martin")
 
 
 @app.route("/login.html/")
 def login():
-    return render_template("login.html", title="Logga in", author="Martin")
+    return render_template("login.html", form=form, title="Logga in", author="Martin/Anders")
 
 
 @app.route("/my_account.html/")
@@ -50,6 +85,12 @@ def serve_static_files(path):
     return send_from_directory("static", path)
 
 
-
+class Registrera(Form):
+    email = StringField("E-post", [validators.Length(min=5, max=50)])
+    password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
+    confirm = PasswordField("Bekräfta lösenord")
+    
+    
 if __name__ == "__main__":
+    app.secret_key='secret123'
     app.run(debug=True)
