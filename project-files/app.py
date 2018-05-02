@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_mysqldb import MySQL
+import calendar
 '''import account_collection'''
 
 app = Flask(__name__)
@@ -14,10 +15,9 @@ def index():
 def to_do_list():
     return render_template("to_do_list.html", title="To Do", author="Christopher")
 
-
 @app.route("/calendar.html/")
 def calendar():
-    return render_template("calendar.html", title="Kalender", author="Martin")
+    return render_template("calendar.html", calendar.calendar(2018), title="Kalender", author="Martin")
 
 
 @app.route("/cleaning_tips.html/")
