@@ -2,6 +2,10 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
+<<<<<<< HEAD
+=======
+from os import listdir
+>>>>>>> e9a8f89c1a2a0ac97f3cf08847908f217c00a93a
 
 from os import listdir
 
@@ -69,6 +73,7 @@ def calendar():
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
+<<<<<<< HEAD
 @app.route("/register.html/")
 
 @app.route("/register.html/", methods=["GET", "POST"])
@@ -76,6 +81,10 @@ def cleaning_tips():
 @app.route("/register.html/", methods=["GET", "POST"])
 
 @app.route("/register.html/", methods=["GET", "POST"])
+=======
+
+@app.route("/register.html/", methods=["GET", "POST"])
+>>>>>>> e9a8f89c1a2a0ac97f3cf08847908f217c00a93a
 def register():
     form = Registrera(request.form)
     if request.method == "POST" and form.validate():
