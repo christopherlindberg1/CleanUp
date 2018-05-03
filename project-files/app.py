@@ -2,15 +2,32 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
-<<<<<<< HEAD
-=======
-import calendar
-from os import listdir
-'''import account_collection'''
->>>>>>> 05857b3a58601bdcf72c14bbdb0b9ab1ccb03271
 
+from os import listdir
 
 app = Flask(__name__)
+
+def get_headlines():
+    headlines = listdir("static/cleaning_articles")
+    headline_list = []
+
+    for headline in headlines:
+        headline = headline[:-4]
+        headline_list.append(headline)
+
+    return headline_list
+
+def get_titlecontent(a):
+    headlines = listdir("static/cleaning_articles")
+    headline_list = []
+    for headline in headlines:
+        if headline == a + ".txt":
+            path = "static/cleaning_articles" + headline
+            asd = days_file = open(path,'r')
+            text = asd.read()
+        else:
+            print("test")
+    return(a + " : " + text)
 
 #Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
@@ -28,6 +45,15 @@ def index():
     '''accounts=accounts # Tog bort denna då den ställde till med problem i fliken i webbläsaren '''
     return render_template("index.html", title="Start", author="Christopher")
 
+@app.route("/article_list.html/")
+def article_list():
+    return render_template("article_list.html", headlines = get_headlines())
+
+@app.route("/static/cleaning_articles/<headline>")
+def wiki(headline):
+    titel=headline
+
+    return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
 
 @app.route("/to_do_list.html/")
 def to_do_list():
@@ -43,16 +69,13 @@ def calendar():
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
-<<<<<<< HEAD
 @app.route("/register.html/")
 
 @app.route("/register.html/", methods=["GET", "POST"])
 
 @app.route("/register.html/", methods=["GET", "POST"])
-=======
 
 @app.route("/register.html/", methods=["GET", "POST"])
->>>>>>> 05857b3a58601bdcf72c14bbdb0b9ab1ccb03271
 def register():
     form = Registrera(request.form)
     if request.method == "POST" and form.validate():
@@ -87,22 +110,22 @@ def login():
         #Get forms Fields
         email = request.form["email"]
         password_candidate = request.form["password"]
-        
+
         #create cursor
         cur = mysql.connection.cursor()
-        
+
         #Get user my email
         result = cur.execute("SELECT * FROM user_password WHERE email = %s", [email])
-        
+
         if result > 0:
             #Get stored hash
             data = cur.fetchone()
             password = data["password"]
-            
+
             #compare Passwords
             if sha256_crypt.verify(password_candidate, password):
                 app.logger.info("PASSWORD MATCHED")
-        
+
         else:
             app.logger.info("NO USER")
     return render_template("login.html") #, title="Logga in", author="Martin/Anders"
