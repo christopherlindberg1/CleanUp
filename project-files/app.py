@@ -12,7 +12,7 @@ app = Flask(__name__)
 #Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -70,10 +70,31 @@ def register():
     return render_template("register.html", form=form, title="Registrera", author="Martin")
 
 
-@app.route("/login.html/")
+@app.route("/login.html/", methods=["GET", "POST"])
 def login():
-    return render_template("login.html", title="Logga in", author="Martin/Anders")
-
+    if request.method == "POST":
+        #Get forms Fields
+        email = request.form["email"]
+        password_candidate = request.form["password"]
+        
+        #create cursor
+        cur = mysql.connection.cursor()
+        
+        #Get user my email
+        result = cur.execute("SELECT * FROM user_password WHERE email = %s", [email])
+        
+        if result > 0:
+            #Get stored hash
+            data = cur.fetchone()
+            password = data["password"]
+            
+            #compare Passwords
+            if sha256_crypt.verify(password_candidate, password):
+                app.logger.info("PASSWORD MATCHED")
+        
+        else:
+            app.logger.info("NO USER")
+    return render_template("login.html") #, title="Logga in", author="Martin/Anders"
 
 @app.route("/my_account.html/")
 def account():
