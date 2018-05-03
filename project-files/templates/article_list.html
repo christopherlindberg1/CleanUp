@@ -7,11 +7,11 @@
     <br>
     <p>
       <ul>
-        % for headline in headlines:
+        {% for headline in headlines: %}
         <li>
           <a href="/static/cleaning_articles/{{ headline }}">{{ headline }}</a>
         </li>
-        % end
+        {% endfor %}
       </ul>
     </p>
     </body>
