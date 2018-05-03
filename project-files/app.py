@@ -71,13 +71,6 @@ def calendar():
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
-@app.route("/register.html/")
-
-@app.route("/register.html/", methods=["GET", "POST"])
-
-@app.route("/register.html/", methods=["GET", "POST"])
-
-@app.route("/register.html/", methods=["GET", "POST"])
 
 @app.route("/register.html/", methods=["GET", "POST"])
 def register():
