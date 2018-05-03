@@ -2,6 +2,13 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
+<<<<<<< HEAD
+=======
+import calendar
+from os import listdir
+'''import account_collection'''
+>>>>>>> 05857b3a58601bdcf72c14bbdb0b9ab1ccb03271
+
 
 app = Flask(__name__)
 
@@ -18,11 +25,14 @@ mysql = MySQL(app)
 @app.route("/")
 def index():
     '''accounts = account_collection.get_accounts()'''
-    return render_template("index.html", title="Start" '''accounts=accounts''', author="Christopher")
+    '''accounts=accounts # Tog bort denna då den ställde till med problem i fliken i webbläsaren '''
+    return render_template("index.html", title="Start", author="Christopher")
+
 
 @app.route("/to_do_list.html/")
 def to_do_list():
     return render_template("to_do_list.html", title="To Do", author="Christopher")
+
 
 @app.route("/calendar.html/")
 def calendar():
@@ -33,11 +43,16 @@ def calendar():
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
 
+<<<<<<< HEAD
 @app.route("/register.html/")
 
 @app.route("/register.html/", methods=["GET", "POST"])
 
 @app.route("/register.html/", methods=["GET", "POST"])
+=======
+
+@app.route("/register.html/", methods=["GET", "POST"])
+>>>>>>> 05857b3a58601bdcf72c14bbdb0b9ab1ccb03271
 def register():
     form = Registrera(request.form)
     if request.method == "POST" and form.validate():
@@ -66,10 +81,31 @@ def register():
     return render_template("register.html", form=form, title="Registrera", author="Martin")
 
 
-@app.route("/login.html/")
+@app.route("/login.html/", methods=["GET", "POST"])
 def login():
-    return render_template("login.html", form=form, title="Logga in", author="Martin/Anders")
-
+    if request.method == "POST":
+        #Get forms Fields
+        email = request.form["email"]
+        password_candidate = request.form["password"]
+        
+        #create cursor
+        cur = mysql.connection.cursor()
+        
+        #Get user my email
+        result = cur.execute("SELECT * FROM user_password WHERE email = %s", [email])
+        
+        if result > 0:
+            #Get stored hash
+            data = cur.fetchone()
+            password = data["password"]
+            
+            #compare Passwords
+            if sha256_crypt.verify(password_candidate, password):
+                app.logger.info("PASSWORD MATCHED")
+        
+        else:
+            app.logger.info("NO USER")
+    return render_template("login.html") #, title="Logga in", author="Martin/Anders"
 
 @app.route("/my_account.html/")
 def account():
