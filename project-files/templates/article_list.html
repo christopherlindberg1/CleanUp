@@ -2,18 +2,22 @@
 
 {% block body %}
 
-    <body>
-      <h1>Städartiklar A-Ö</h1>
-    <br>
-    <p>
-      <ul>
-        {% for headline in headlines: %}
-        <li>
-          <a href="/static/cleaning_articles/{{ headline }}">{{ headline }}</a>
-        </li>
-        {% endfor %§}
-      </ul>
-    </p>
-    </body>
+    <main>
+      <section class="container-fluid">
+          <div class="container container-smaller">
+          <h1 class="display-4">Städartiklar A-Ö</h1>
+        <br>
+        <p>
+          <ul class="list-group">
+            {% for headline in headlines: %}
+            <li class="list-group-item">
+              <a href="/static/cleaning_articles/{{ headline }}">{{ headline }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </p>
+      </div>
+    </section>
+  </main>
 
 {% endblock %}
