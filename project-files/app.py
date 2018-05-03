@@ -2,9 +2,6 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
-
-from os import listdir
-
 from os import listdir
 
 app = Flask(__name__)
@@ -70,7 +67,6 @@ def calendar():
 @app.route("/cleaning_tips.html/")
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips")
-
 
 @app.route("/register.html/", methods=["GET", "POST"])
 def register():
