@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="sv">
 	<head>
-		<title>CleanUp - {{ title }}</title>
-
+		{% if title %}
+			<title>CleanUp - {{ title }}</title>
+		{% else %}
+			<title>CleanUp</title>
+		{% endif %}
+		
 		<meta name="author" content={{ author }}>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

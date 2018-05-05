@@ -16,7 +16,7 @@ def get_headlines():
 
     return headline_list
 
-def get_titlecontent(a):
+def get_title_content(a):
     headlines = listdir("static/cleaning_articles")
     headline_list = []
     for headline in headlines:
@@ -38,21 +38,13 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 #init MYSQL
 mysql = MySQL(app)
 
+
 @app.route("/")
 def index():
     '''accounts = account_collection.get_accounts()'''
     '''accounts=accounts # Tog bort denna då den ställde till med problem i fliken i webbläsaren '''
-    return render_template("index.html", title="Start", author="Christopher")
+    return render_template("index.html", author="Christopher")
 
-@app.route("/article_list.html/")
-def article_list():
-    return render_template("article_list.html", headlines = get_headlines())
-
-@app.route("/static/cleaning_articles/<headline>")
-def wiki(headline):
-    titel=headline
-
-    return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
 
 @app.route("/to_do_list.html/")
 def to_do_list():
@@ -66,7 +58,20 @@ def calendar():
 
 @app.route("/cleaning_tips.html/")
 def cleaning_tips():
-    return render_template("cleaning_tips.html", title="Städtips")
+    return render_template("cleaning_tips.html", title="Städtips", author="Christopher")
+
+
+@app.route("/article_list.html/")
+def article_list():
+    return render_template("article_list.html", title="Lista A-Ö", headlines = get_headlines())
+
+
+@app.route("/static/cleaning_articles/<headline>")
+def wiki(headline):
+    titel=headline
+
+    return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
+
 
 @app.route("/register.html/", methods=["GET", "POST"])
 def register():
@@ -121,7 +126,8 @@ def login():
 
         else:
             app.logger.info("NO USER")
-    return render_template("login.html") #, title="Logga in", author="Martin/Anders"
+    return render_template("login.html", title="Logga in", author="Martin/Anders")
+
 
 @app.route("/my_account.html/")
 def account():
