@@ -6,6 +6,7 @@ from os import listdir
 
 app = Flask(__name__)
 
+
 def get_headlines():
     headlines = listdir("static/cleaning_articles")
     headline_list = []
@@ -15,6 +16,7 @@ def get_headlines():
         headline_list.append(headline)
 
     return headline_list
+
 
 def get_title_content(a):
     headlines = listdir("static/cleaning_articles")
@@ -41,8 +43,6 @@ mysql = MySQL(app)
 
 @app.route("/")
 def index():
-    '''accounts = account_collection.get_accounts()'''
-    '''accounts=accounts # Tog bort denna då den ställde till med problem i fliken i webbläsaren '''
     return render_template("index.html", author="Christopher")
 
 
@@ -69,7 +69,6 @@ def article_list():
 @app.route("/static/cleaning_articles/<headline>")
 def wiki(headline):
     titel=headline
-
     return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
 
 
