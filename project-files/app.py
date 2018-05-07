@@ -73,7 +73,7 @@ def wiki(headline):
 
 @app.route("/register.html/", methods=["GET", "POST"])
 def register():
-    form = Registrera(request.form)
+    form = Register(request.form)
     if request.method == "POST" and form.validate():
         email = form.email.data
         password = sha256_crypt.encrypt(str(form.password.data))
@@ -142,7 +142,7 @@ def serve_static_files(path):
     return send_from_directory("static", path)
 
 
-class Registrera(Form):
+class Register(Form):
     email = StringField("E-post", [validators.Length(min=5, max=50)])
     password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
