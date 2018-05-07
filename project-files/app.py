@@ -14,7 +14,6 @@ def get_headlines():
     for headline in headlines:
         headline = headline[:-4]
         headline_list.append(headline)
-
     return headline_list
 
 
