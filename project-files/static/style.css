@@ -22,6 +22,13 @@ li.nav-item-right {
 	margin: 3.5em 0 0;
 }
 
+div.alert {
+	position: absolute;
+	margin-top: 0;
+	width: 100%;
+	border-radius: 0px;
+}
+
 .sm-space {
 	height: 1em;
 }

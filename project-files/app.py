@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from os import listdir
+from functools import wraps
 
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ def get_title_content(a):
 #Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -71,6 +72,12 @@ def wiki(headline):
     return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
 
 
+class Register(Form):
+    email = StringField("E-post", [validators.Length(min=5, max=50)])
+    password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
+    confirm = PasswordField("Bekräfta lösenord")
+
+
 @app.route("/register/", methods=["GET", "POST"])
 def register():
     form = Register(request.form)
@@ -92,10 +99,7 @@ def register():
 
         # Registration message with categories
         flash('Du är nu registrerad och kan logga in', 'success')
-
-        redirect(url_for('index'))
-
-        return render_template("register.html", form = form)
+        return redirect(url_for("login"))
 
     return render_template("register.html", form=form, title="Registrera", author="Martin")
 
@@ -120,12 +124,25 @@ def login():
 
             #compare Passwords
             if sha256_crypt.verify(password_candidate, password):
-                app.logger.info("PASSWORD MATCHED")
+                session["logged_in"] = True
+                session["username"] = email
+                flash("Du är nu inloggad", "success")
+                return redirect(url_for("index"))
             else:
-                app.logger.info("PASSWORD NOT MATCHED")
+                error = "Ogiltigt lösenord"
+                return render_template("/login.html", error=error)
+            cur.close()
         else:
-            app.logger.info("NO USER")
+            error = "Ingen användare hittades med denna epost"
+            return render_template("/login.html", error=error)
+
     return render_template("login.html", title="Logga in", author="Martin/Anders")
+
+
+@app.route("/logout/")
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
 
 
 @app.route("/my_account/")
@@ -143,10 +160,7 @@ def serve_static_files(path):
     return send_from_directory("static", path)
 
 
-class Register(Form):
-    email = StringField("E-post", [validators.Length(min=5, max=50)])
-    password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
-    confirm = PasswordField("Bekräfta lösenord")
+
 
 
 if __name__ == "__main__":
