@@ -16,8 +16,15 @@
 
 			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 				<ul class="foot-col">
-					<li><a href="/my_account/" class="">Mitt konto</a></li>
-					<li><a href="/my_home/" class="">Min bostad</a></li>
+					{% if session.logged_in %}
+						<li><a href="/my_account/" class="">Mitt konto</a></li>
+						<li><a href="/my_home/" class="">Min bostad</a></li>
+						<br>
+						<li><a href="/logout/" class="">Logga ut</a></li>
+					{% else %}
+						<li><a href="/register/" class="">Registrera</a></li>
+						<li><a href="/login/" class="">Logga in</a></li>
+					{% endif %}
 				</ul>
 			</div>
 
