@@ -32,6 +32,7 @@ def get_title_content(a):
 
 
 def is_logged_in(f):
+    ''' Används för att göra vissa sidor synliga för endast inloggade användare '''
     @wraps(f)
     def wrap(*args, **kwargs):
         if "logged_in" in session:
@@ -151,9 +152,6 @@ def login():
             return render_template("/login.html", error=error)
     
     return render_template("login.html", title="Logga in", author="Martin/Anders")
-
-
-
 
 
 @app.route("/logout/")
