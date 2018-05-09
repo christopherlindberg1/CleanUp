@@ -123,7 +123,6 @@ def login():
                 app.logger.info("PASSWORD MATCHED")
             else:
                 app.logger.info("PASSWORD NOT MATCHED")
-
         else:
             app.logger.info("NO USER")
     return render_template("login.html", title="Logga in", author="Martin/Anders")
