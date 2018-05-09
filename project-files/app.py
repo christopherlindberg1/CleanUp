@@ -45,22 +45,22 @@ def index():
     return render_template("index.html", author="Christopher")
 
 
-@app.route("/to_do_list.html/")
+@app.route("/to_do_list/")
 def to_do_list():
     return render_template("to_do_list.html", title="To Do", author="Christopher")
 
 
-@app.route("/calendar.html/")
+@app.route("/calendar/")
 def calendar():
     return render_template("calendar.html", title="Kalender", author="Martin")
 
 
-@app.route("/cleaning_tips.html/")
+@app.route("/cleaning_tips/")
 def cleaning_tips():
     return render_template("cleaning_tips.html", title="Städtips", author="Christopher")
 
 
-@app.route("/article_list.html/")
+@app.route("/article_list/")
 def article_list():
     return render_template("article_list.html", title="Lista A-Ö", headlines = get_headlines())
 
@@ -71,7 +71,7 @@ def wiki(headline):
     return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
 
 
-@app.route("/register.html/", methods=["GET", "POST"])
+@app.route("/register/", methods=["GET", "POST"])
 def register():
     form = Register(request.form)
     if request.method == "POST" and form.validate():
@@ -100,7 +100,7 @@ def register():
     return render_template("register.html", form=form, title="Registrera", author="Martin")
 
 
-@app.route("/login.html/", methods=["GET", "POST"])
+@app.route("/login/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         #Get forms Fields
@@ -128,12 +128,12 @@ def login():
     return render_template("login.html", title="Logga in", author="Martin/Anders")
 
 
-@app.route("/my_account.html/")
+@app.route("/my_account/")
 def account():
     return render_template("my_account.html", title="Mitt konto")
 
 
-@app.route("/my_home.html/")
+@app.route("/my_home/")
 def my_home():
     return render_template("my_home.html", title="Min bostad", author="Christopher")
 
