@@ -30,6 +30,18 @@ def get_title_content(a):
             print("test")
     return(a + " : " + text)
 
+
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if "logged_in" in session:
+            return f(*args, **kwargs)
+        else:
+            flash("För att ta del av den här sidan måste du logga in", "primary")
+            return redirect(url_for("login"))
+    return wrap
+
+
 #Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -47,11 +59,13 @@ def index():
 
 
 @app.route("/to_do_list/")
+@is_logged_in
 def to_do_list():
     return render_template("to_do_list.html", title="To Do", author="Christopher")
 
 
 @app.route("/calendar/")
+@is_logged_in
 def calendar():
     return render_template("calendar.html", title="Kalender", author="Martin")
 
@@ -135,8 +149,11 @@ def login():
         else:
             error = "Ingen användare hittades med denna epost"
             return render_template("/login.html", error=error)
-
+    
     return render_template("login.html", title="Logga in", author="Martin/Anders")
+
+
+
 
 
 @app.route("/logout/")
@@ -146,11 +163,13 @@ def logout():
 
 
 @app.route("/my_account/")
+@is_logged_in
 def account():
     return render_template("my_account.html", title="Mitt konto")
 
 
 @app.route("/my_home/")
+@is_logged_in
 def my_home():
     return render_template("my_home.html", title="Min bostad", author="Christopher")
 
