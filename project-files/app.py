@@ -7,7 +7,7 @@ from functools import wraps
 
 app = Flask(__name__)
 
-#Author: Martin Lobell
+#Author: Martin
 def get_headlines():
     headlines = listdir("static/cleaning_articles")
     headline_list = []
@@ -17,7 +17,8 @@ def get_headlines():
         headline_list.append(headline)
     return headline_list
 
-#Author: Martin Lobell
+
+#Author: Martin
 def get_title_content(a):
     headlines = listdir("static/cleaning_articles")
     headline_list = []
@@ -28,7 +29,8 @@ def get_title_content(a):
             text = asd.read()
         else:
             print("test")
-    return(a + ": " + text)
+    return(a + ": " +
+    text)
 
 
 def is_logged_in(f):
@@ -75,7 +77,7 @@ def update():
     my_file.write(content)
     my_file.close()
 
-    return redirect("/article_list/")
+    return redirect("/article_list/", author="Martin")
 
 
 @app.route("/to_do_list/")
@@ -97,7 +99,7 @@ def cleaning_tips():
 
 @app.route("/article_list/")
 def article_list():
-    return render_template("article_list.html", title="Lexikon A-Ö", headlines = get_headlines())
+    return render_template("article_list.html", title="Lexikon A-Ö", headlines = get_headlines(), author="Martin")
 
 
 @app.route("/static/cleaning_articles/<headline>")
