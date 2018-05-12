@@ -2,12 +2,19 @@
 
 {% block body %}
 
-    <body>
-      <h1>Städartikel</h1>
-    <p>{{ test }}<p>
-    <p>
-      <a href="/">Tillbaka till startsidan</a>
-    </p>
-    </body>
+<main>
+  <section class="container-fluid">
+      <div class="container container-smaller">
+          <h1 class="display-4">Städartikel</h1>
+          <p>{{ test }}<p>
+          <p>
+            <a href="/">Tillbaka till startsidan</a>
+          </p>
+          <p>
+            <a href="/article_list">Tillbaka till lexikonet</a>
+          </p>
+      </div>
+  </section>
+</main>
 
 {% endblock %}

@@ -7,7 +7,7 @@ from functools import wraps
 
 app = Flask(__name__)
 
-
+#Author: Martin Lobell
 def get_headlines():
     headlines = listdir("static/cleaning_articles")
     headline_list = []
@@ -17,7 +17,7 @@ def get_headlines():
         headline_list.append(headline)
     return headline_list
 
-
+#Author: Martin Lobell
 def get_title_content(a):
     headlines = listdir("static/cleaning_articles")
     headline_list = []
@@ -28,7 +28,7 @@ def get_title_content(a):
             text = asd.read()
         else:
             print("test")
-    return(a + " : " + text)
+    return(a + ": " + text)
 
 
 def is_logged_in(f):
@@ -59,6 +59,25 @@ def index():
     return render_template("index.html", author="Christopher")
 
 
+@app.route("/edit/")
+def edit_article():
+    return render_template("edit.html", author="Martin")
+
+
+@app.route("/update/", methods=["POST"])
+def update():
+
+    headline = request.form.get("headline")
+    content = request.form.get("content")
+    article_path = "static/cleaning_articles/" + str(headline) + ".txt"
+
+    my_file = open(article_path, "w")
+    my_file.write(content)
+    my_file.close()
+
+    return redirect("/article_list/")
+
+
 @app.route("/to_do_list/")
 @is_logged_in
 def to_do_list():
@@ -78,13 +97,13 @@ def cleaning_tips():
 
 @app.route("/article_list/")
 def article_list():
-    return render_template("article_list.html", title="Lista A-Ö", headlines = get_headlines())
+    return render_template("article_list.html", title="Lexikon A-Ö", headlines = get_headlines())
 
 
 @app.route("/static/cleaning_articles/<headline>")
-def wiki(headline):
-    titel=headline
-    return render_template("article.html", test=get_titlecontent(titel), headlines = get_headlines())
+def article(headline):
+    titel = headline
+    return render_template("article.html", test = get_title_content(titel), headlines = get_headlines(), author="Martin")
 
 
 class Register(Form):
@@ -150,7 +169,7 @@ def login():
         else:
             error = "Ingen användare hittades med denna epost"
             return render_template("/login.html", error=error)
-    
+
     return render_template("login.html", title="Logga in", author="Martin/Anders")
 
 
@@ -175,9 +194,6 @@ def my_home():
 @app.route("/static/<path:path>")
 def serve_static_files(path):
     return send_from_directory("static", path)
-
-
-
 
 
 if __name__ == "__main__":
