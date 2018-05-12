@@ -23,7 +23,7 @@ def get_title_content(a):
     headline_list = []
     for headline in headlines:
         if headline == a + ".txt":
-            path = "static/cleaning_articles" + headline
+            path = "static/cleaning_articles/" + headline
             asd = days_file = open(path,'r')
             text = asd.read()
         else:
