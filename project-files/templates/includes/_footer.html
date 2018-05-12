@@ -6,11 +6,18 @@
 
 			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 				<ul class="foot-col">
-					<li><a href="/">Start</a></li>
-					<li><a href="/to_do_list/">To do-lista</a></li>
-					<li><a href="/calendar/">Kalender</a></li>
-					<li><a href="/cleaning_tips/">Städtips</a></li>
-					<li><a href="/article_list/">Lista A-Ö</a></li>
+					{% if session.logged_in %}
+						<li><a href="/">Start</a></li>
+						<li><a href="/to_do_list/">To do-lista</a></li>
+						<li><a href="/calendar/">Kalender</a></li>
+						<li><a href="/cleaning_tips/">Städtips</a></li>
+						<li><a href="/article_list/">Lista A-Ö</a></li>
+					{% else %}
+						<li><a href="/">Start</a></li>
+						<li><a href="/cleaning_tips/">Städtips</a></li>
+						<li><a href="/article_list/">Lista A-Ö</a></li>
+					{% endif %}
+					
 				</ul>
 			</div>
 
