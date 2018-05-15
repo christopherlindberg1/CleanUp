@@ -29,8 +29,7 @@ def get_title_content(a):
             text = asd.read()
         else:
             print("test")
-    return(a + ": " +
-    text)
+    return(a + ": " + text)
 
 
 def is_logged_in(f):
