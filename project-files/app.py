@@ -77,7 +77,7 @@ def update():
     my_file.write(content)
     my_file.close()
 
-    return redirect("/article_list/", author="Martin")
+    return redirect("/article_list/")
 
 
 @app.route("/to_do_list/")
