@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
 from flask_mysqldb import MySQL
-from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from wtforms import Form, StringField, TextAreaField, PasswordField, BooleanField, validators
 from passlib.hash import sha256_crypt
 from os import listdir
 from functools import wraps
@@ -108,7 +108,7 @@ def article(headline):
 
 
 class Register(Form):
-    email = StringField("E-post", [validators.Length(min=5, max=50)])
+    email = StringField("E-post", [validators.Length(min=5, max=50), validators.Email()])
     password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
 
