@@ -89,6 +89,10 @@ section {
 	padding: 2em 0em;
 }
 
+section:first-of-type {
+	padding-top: 2.5em;
+}
+
 section h2 {
 	font-weight: 400;
 }

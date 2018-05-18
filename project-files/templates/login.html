@@ -23,10 +23,13 @@
                         <label>Lösenord</label>
                         <input type="password" name="password" class="form-control" value={{request.form.password}}>
                     </div>
+                    <div class="form-check mb-2">
+                    	{{ form.remember_me(class="form-check-input") }}
+                    	{{ form.remember_me.label(class="form-check-label") }}
+                    </div>
                     <button type="submit" class="btn btn-primary login-btn">Logga in</button>
-                    <p>Har du redan inget konto? <a href="/register/">Registrera dig här!</a></p>
-					
 				</form>
+				<p class="mt-1">Har du redan inget konto? <a href="/register/">Registrera dig här!</a></p>
 			</div>
 		</section>
 	</main>

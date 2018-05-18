@@ -47,7 +47,7 @@ def is_logged_in(f):
 #Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -108,9 +108,13 @@ def article(headline):
 
 
 class Register(Form):
-    email = StringField("E-post", [validators.Length(min=5, max=50), validators.Email()])
+    email = StringField("E-post", [validators.Email()])
     password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
+    terms_and_agreements = BooleanField("Jag har läst och godkänt våra Terms and agreements")
+
+class Login(Form):
+    remember_me = BooleanField("Kom ihåg mig")
 
 
 @app.route("/register/", methods=["GET", "POST"])
@@ -140,11 +144,12 @@ def register():
             flash('Det finns redan ett konto registrerat på denna e-post', 'danger')
             return redirect (url_for("register"))
 
-    return render_template("register.html", form=form, title="Registrera", author="Martin")
+    return render_template("register.html", form=form, title="Registrera", author="Martin/Christopher")
 
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
+    form = Login(request.form)
     if request.method == "POST":
         #Get forms Fields
         email = request.form["email"]
@@ -168,14 +173,14 @@ def login():
                 flash("Du är nu inloggad", "success")
                 return redirect(url_for("index"))
             else:
-                error = "Ogiltigt lösenord"
-                return render_template("/login.html", error=error)
+                flash("Ogiltigt lösenord", "danger")
+                return render_template("login.html", form=form)
             cur.close()
         else:
-            error = "Ingen användare hittades med denna epost"
-            return render_template("/login.html", error=error)
+            flash("Ingen användare med denna epost hittades", "danger")
+            return render_template("login.html", form=form)
 
-    return render_template("login.html", title="Logga in", author="Martin/Anders")
+    return render_template("login.html", form=form, title="Logga in", author="Martin/Anders/Christopher")
 
 
 @app.route("/logout/")

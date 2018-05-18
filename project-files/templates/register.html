@@ -16,22 +16,22 @@
             <div class="container container-smaller">
                 <form  method="POST" action="">
                     <div class="form-group">
-                        {{render_field(form.email, class_="form-control")}}
+                        {{ render_field(form.email, class_="form-control") }}
                     </div>
                     <div class="form-group">
-                        {{render_field(form.password, class_="form-control")}}
+                        {{ render_field(form.password, class_="form-control") }}
                     </div>             
                     <div class="form-group">
-                        {{render_field(form.confirm, class_="form-control")}}
-                    </div>                    
+                        {{ render_field(form.confirm, class_="form-control") }}
+                    </div>
 
-                    <p>Jag har läst och godkänt våra <a href="#">Terms & Conditions.</a></p>
+                    <p class="mb-2">Jag har läst och godkänt våra <a href="#">Terms & Conditions.</a></p>
                     <button type="submit" class="btn btn-primary login-btn">Registrera!</button>
-
-                    <p>Har du redan registrerat ett konto? <a href="/login/">Logga in!</a></p>
                 </form>
+                <p class="mt-1">Har du redan registrerat ett konto? <a href="/login/">Logga in!</a></p>
             </div>
-        </section>    
+        </section>
+        
     </main>
 
 {% endblock %}
