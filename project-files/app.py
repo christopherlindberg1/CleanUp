@@ -117,24 +117,28 @@ class Register(Form):
 def register():
     form = Register(request.form)
     if request.method == "POST" and form.validate():
-        email = form.email.data
-        password = sha256_crypt.encrypt(str(form.password.data))
+        try:
+            email = form.email.data
+            password = sha256_crypt.encrypt(str(form.password.data))
 
-        # Create cursor
-        cur = mysql.connection.cursor()
+            # Create cursor
+            cur = mysql.connection.cursor()
 
-        # Execute query
-        cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
+            # Execute query
+            cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
 
-        # Commit to DB
-        mysql.connection.commit()
+            # Commit to DB
+            mysql.connection.commit()
 
-        # Close connection
-        cur.close()
+            # Close connection
+            cur.close()
 
-        # Registration message with categories
-        flash('Du är nu registrerad och kan logga in', 'success')
-        return redirect(url_for("login"))
+            # Registration message with categories
+            flash('Du är nu registrerad och kan logga in', 'success')
+            return redirect(url_for("login"))
+        except:
+            flash('Det finns redan ett konto registrerat på denna e-post', 'danger')
+            return redirect (url_for("register"))
 
     return render_template("register.html", form=form, title="Registrera", author="Martin")
 
