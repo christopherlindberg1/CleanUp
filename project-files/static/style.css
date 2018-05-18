@@ -414,6 +414,10 @@ ul.house-info-list {
 /*xs bootstrap */
 @media (max-width: 576px) {
 
+	nav > div.navbar-collapse > ul > a {
+		margin-left: 0 !important;
+	}
+
 	div.jumbotron.home {
 		height: 250px;
 	}

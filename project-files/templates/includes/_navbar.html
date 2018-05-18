@@ -1,52 +1,13 @@
-<!--
-
-****************** GAMMLA MENYN ******************
-
-<nav class="navbar fixed-top navbar-expand-md navbar-dark">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark">
     <a class="navbar-brand" href="/">CleanUp</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/to_do_list.html/">To Do-lista</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/calendar.html/">Kalender</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/cleaning_tips.html/">Städtips</a>
-            </li>
-            <li class="nav-item nav-item-right">
-                <a class="nav-link" href="/article_list.html/">Lista A-Ö</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register.html/">Registrera</a>
-            </li>
-            <li class="nav-item nav-item-right">
-                <a class="nav-link" href="/login.html/">Logga in</a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
-
-
-<!-- Hade varit bra att få en drop-down till höger med alla länkar relaterat till kontot;
-logga in/ut, registrera, min bostad, mitt konto etc. Mobilversionen ser inte bra ut atm -->
-
-<nav class="navbar fixed-top navbar-expand-md navbar-dark">
     <div class="ml-auto order-0">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <div class="navbar-collapse collapse order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand ml-auto" href="/">CleanUp</a>
             {% if session.logged_in %}
                 <li class="nav-item"><a class="nav-link" href="/to_do_list/">To Do-lista</a></li>
                 <li class="nav-item"><a class="nav-link" href="/calendar/">Kalender</a></li>
@@ -59,7 +20,7 @@ logga in/ut, registrera, min bostad, mitt konto etc. Mobilversionen ser inte bra
         </ul>
     </div>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             {% if session.logged_in %}
                 <li class="nav-item"><a class="nav-link" href="/logout/">Logga ut</a></li>
