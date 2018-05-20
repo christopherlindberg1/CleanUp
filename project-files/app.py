@@ -104,14 +104,14 @@ def article_list():
 @app.route("/static/cleaning_articles/<headline>")
 def article(headline):
     titel = headline
-    return render_template("article.html", test = get_title_content(titel), headlines = get_headlines(), author="Martin")
+    return render_template("article.html", content = get_title_content(titel), headlines = get_headlines(), author="Martin")
 
 
 class Register(Form):
     email = StringField("E-post", [validators.Email()])
     password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
-    terms_and_agreements = BooleanField("Jag har läst och godkänt våra Terms and agreements")
+    
 
 class Login(Form):
     remember_me = BooleanField("Kom ihåg mig")
