@@ -18,7 +18,9 @@
         </p>
         <p>Källa: <a href="https://www.adlibris.com/se/bok/stadgladje-med-marlene-eriksson-9789176610220" target="_blank">Städglädje med Marlene Eriksson</a></p>
         <p>
+          {% if session.logged_in %}
           <a href="/edit">Saknas något? Lägg till en egen artikel här!</a>
+          {% endif %}
         </p>
       </div>
     </section>
