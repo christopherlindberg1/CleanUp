@@ -184,6 +184,7 @@ def login():
 
 
 @app.route("/logout/")
+@is_logged_in
 def logout():
     session.clear()
     return redirect(url_for("index"))
