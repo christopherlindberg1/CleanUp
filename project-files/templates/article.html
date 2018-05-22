@@ -2,23 +2,18 @@
 
 {% block body %}
 
-<main>
-  <section class="container-fluid">
-      <div class="container container-smaller">
-          <h1 class="display-4">Artikel</h1>
-          <p>
-            {{ content }}
-          <p>
-          <!-- Kommenterade ut detta då det redan finns länk till index i nav och footer
-          <p>
-            <a href="/">Tillbaka till startsidan</a>
-          </p>
-          -->
-          <p>
-            <a href="/article_list">Tillbaka till lexikonet</a>
-          </p>
-      </div>
-  </section>
-</main>
+    <main>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <h1 class="display-4">Artikel</h1>
+                <p>
+                    {{ content }}
+                </p>
+                <p>
+                    <a href="/article_list">Tillbaka till lexikonet</a>
+                </p>
+            </div>
+        </section>
+    </main>
 
 {% endblock %}
