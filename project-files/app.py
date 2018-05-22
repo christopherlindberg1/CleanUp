@@ -29,7 +29,7 @@ def get_title_content(a):
             text = fill.read()
         else:
             print("test")
-    return (a + ": \n" + text)
+    return (a + ": " + text)
 
 
 def is_logged_in(f):
