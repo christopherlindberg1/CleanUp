@@ -25,11 +25,11 @@ def get_title_content(a):
     for headline in headlines:
         if headline == a + ".txt":
             path = "static/cleaning_articles/" + headline
-            asd = days_file = open(path,'r')
-            text = asd.read()
+            fill = days_file = open(path,'r')
+            text = fill.read()
         else:
             print("test")
-    return(a + ": " + text)
+    return (a + ": \n" + text)
 
 
 def is_logged_in(f):
@@ -111,7 +111,7 @@ class Register(Form):
     email = StringField("E-post", [validators.Email()])
     password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
-    
+
 
 class Login(Form):
     remember_me = BooleanField("Kom ihåg mig")
