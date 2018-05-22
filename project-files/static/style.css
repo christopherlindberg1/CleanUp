@@ -10,14 +10,6 @@ nav {
 	background-color: #111;
 }
 
-nav > a {
-	color: #999;
-}
-
-li.nav-item-right {
-	float: right;
-}
-
 .clearfix {
 	margin: 3.5em 0 0;
 }
@@ -27,22 +19,6 @@ div.alert {
 	margin-top: 0;
 	width: 100%;
 	border-radius: 0px;
-}
-
-.sm-space {
-	height: 1em;
-}
-
-.md-space {
-	height: 2em;
-}
-
-.lg-space {
-	height: 3em;
-}
-
-.xl-space {
-	height: 4em;
 }
 
 .light-gray {
@@ -81,10 +57,6 @@ div.container.container-smaller {
 	width: 960px;	
 }
 
-main {
-
-}
-
 section {
 	padding: 2em 0em;
 }
@@ -93,13 +65,8 @@ section:first-of-type {
 	padding-top: 2.5em;
 }
 
-section h2 {
-	font-weight: 400;
-}
-
 section h3 {
 	padding-top: 0.5em;
-	font-weight: 400;
 	font-size: 2em;
 }
 
@@ -347,31 +314,6 @@ button.login-btn { /* Denna klassen används även till register.html */
     cursor: pointer;
     width: 100%;
 }
-
-/* Tog bort denna så att hover-effekten är densamma på alla knappar */
-/*button.login-btn:hover {
-    opacity: 0.8;
-}*/
-
-button.login-btn > a {
-    color: #fff;
-}
-
-/*** Används inte än men låt stå kvar ***/
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
 /***** slut login.html *****/
 
 
@@ -551,13 +493,5 @@ ul.house-info-list {
 	div.container.container-smaller {
 		width: 80%;	
 	}
-
-}
-
-
-/* xl bootstrap */
-@media (min-width: 1200px) {
-
-
 
 }
