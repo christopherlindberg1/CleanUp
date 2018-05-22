@@ -29,8 +29,8 @@ def get_title_content(a):
     return (a + ": " + text)
 
 
-def is_logged_in(f):
-    ''' Används för att göra vissa sidor synliga för endast inloggade användare '''
+'''def is_logged_in(f):
+    Används för att göra vissa sidor synliga för endast inloggade användare
     @wraps(f)
     def wrap(*args, **kwargs):
         if "logged_in" in session:
@@ -39,3 +39,4 @@ def is_logged_in(f):
             flash("För att ta del av den här sidan måste du logga in", "primary")
             return redirect(url_for("login"))
     return wrap
+'''

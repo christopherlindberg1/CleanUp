@@ -2,19 +2,32 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, BooleanField, validators
 from passlib.hash import sha256_crypt
-from functions import get_headlines, get_title_content, is_logged_in
+from functools import wraps
+from functions import get_headlines, get_title_content
 
 app = Flask(__name__)
 
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 
 mysql = MySQL(app)
+
+
+def is_logged_in(f):
+    '''Används för att göra vissa sidor synliga för endast inloggade användare'''
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if "logged_in" in session:
+            return f(*args, **kwargs)
+        else:
+            flash("För att ta del av den här sidan måste du logga in", "primary")
+            return redirect(url_for("login"))
+    return wrap
 
 
 @app.route("/")
