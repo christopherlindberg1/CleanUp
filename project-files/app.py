@@ -7,14 +7,13 @@ from functions import get_headlines, get_title_content, is_logged_in
 app = Flask(__name__)
 
 
-#Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-#init MYSQL
+
 mysql = MySQL(app)
 
 
@@ -30,7 +29,7 @@ def edit_article():
 
 @app.route("/update/", methods=["POST"])
 def update():
-
+    '''Skapar variabler för rubrik och innehåll och skriver in som textfil på rätt plats. Omdirigerar därefter användaren tillbaka till Lexikon-sidan.'''
     headline = request.form.get("headline")
     content = request.form.get("content")
     article_path = "static/cleaning_articles/" + str(headline) + ".txt"

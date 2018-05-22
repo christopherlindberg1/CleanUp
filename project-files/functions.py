@@ -23,6 +23,7 @@ def get_title_content(a):
             path = "static/cleaning_articles/" + headline
             fill = days_file = open(path,'r')
             text = fill.read()
+            fill.close()
         else:
             print("test")
     return (a + ": " + text)
