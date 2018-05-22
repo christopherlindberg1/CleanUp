@@ -2,9 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, BooleanField, validators
 from passlib.hash import sha256_crypt
-from os import listdir
-from functools import wraps
-from functions.py import get_headlines(), get_title_content(), is_logged_in()
+from functions import get_headlines, get_title_content, is_logged_in
 
 app = Flask(__name__)
 
@@ -84,54 +82,47 @@ class Login(Form):
 
 @app.route("/register/", methods=["GET", "POST"])
 def register():
+    '''Funktion för registrering som skickar data till databas.'''
     form = Register(request.form)
     if request.method == "POST" and form.validate():
         try:
             email = form.email.data
             password = sha256_crypt.encrypt(str(form.password.data))
 
-            # Create cursor
             cur = mysql.connection.cursor()
 
-            # Execute query
             cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
 
-            # Commit to DB
             mysql.connection.commit()
 
-            # Close connection
             cur.close()
 
-            # Registration message with categories
             flash('Du är nu registrerad och kan logga in', 'success')
             return redirect(url_for("login"))
         except:
             flash('Det finns redan ett konto registrerat på denna e-post', 'danger')
             return redirect (url_for("register"))
-
-    return render_template("register.html", form=form, title="Registrera", author="Martin/Christopher")
+    else:
+        return render_template("register.html", form=form, title="Registrera", author="Martin/Christopher")
 
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
+    '''Funktion för inloggning och kontroll av databas.'''
     form = Login(request.form)
     if request.method == "POST":
-        #Get forms Fields
+
         email = request.form["email"]
         password_candidate = request.form["password"]
 
-        #create cursor
         cur = mysql.connection.cursor()
 
-        #Get user my email
         result = cur.execute("SELECT * FROM user_password WHERE email = %s", [email])
 
         if result > 0:
-            #Get stored hash
             data = cur.fetchone()
             password = data["password"]
 
-            #compare Passwords
             if sha256_crypt.verify(password_candidate, password):
                 session["logged_in"] = True
                 session["username"] = email
@@ -144,8 +135,8 @@ def login():
         else:
             flash("Ingen användare med denna epost hittades", "danger")
             return render_template("login.html", form=form)
-
-    return render_template("login.html", form=form, title="Logga in", author="Martin/Anders/Christopher")
+    else:
+        return render_template("login.html", form=form, title="Logga in", author="Martin/Anders/Christopher")
 
 
 @app.route("/logout/")
