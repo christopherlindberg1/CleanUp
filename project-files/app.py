@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -102,11 +102,8 @@ def register():
             password = sha256_crypt.encrypt(str(form.password.data))
 
             cur = mysql.connection.cursor()
-
             cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
-
             mysql.connection.commit()
-
             cur.close()
 
             flash('Du är nu registrerad och kan logga in', 'success')
@@ -120,7 +117,7 @@ def register():
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
-    '''Funktion för inloggning och kontroll av databas.'''
+    '''Funktion för inloggning, kontrollerar med data i databas.'''
     form = Login(request.form)
     if request.method == "POST":
 
@@ -128,7 +125,6 @@ def login():
         password_candidate = request.form["password"]
 
         cur = mysql.connection.cursor()
-
         result = cur.execute("SELECT * FROM user_password WHERE email = %s", [email])
 
         if result > 0:

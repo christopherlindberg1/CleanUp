@@ -3,26 +3,26 @@
 {% block body %}
 
     <main>
-      <section class="container-fluid">
-          <div class="container container-smaller">
-          <h1 class="display-4">Städlexikon A-Ö</h1>
-        <br>
-        <p>
-          <ul class="list-group">
-            {% for headline in headlines: %}
-            <li class="list-group-item">
-              <a href="/static/cleaning_articles/{{ headline }}">{{ headline }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </p>
-        <p>
-          {% if session.logged_in %}
-          <a href="/edit">Saknas något? Lägg till en egen artikel här!</a>
-          {% endif %}
-        </p>
-      </div>
-    </section>
-  </main>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <h1 class="display-4">Städlexikon A-Ö</h1>
+                <br>
+                <p>
+                    <ul class="list-group">
+                        {% for headline in headlines: %}
+                            <li class="list-group-item">
+                            <a href="/static/cleaning_articles/{{ headline }}">{{ headline }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </p>
+                <p>
+                {% if session.logged_in %}
+                    <a href="/edit">Saknas något? Lägg till en egen artikel här!</a>
+                {% endif %}
+                </p>
+            </div>
+        </section>
+    </main>
 
 {% endblock %}
