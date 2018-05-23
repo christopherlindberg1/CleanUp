@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'clean417k(dj'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -81,10 +81,10 @@ def article_list():
 @app.route("/static/cleaning_articles/<headline>")
 def article(headline):
     article_path = "static/cleaning_articles/" + str(headline) + ".txt"
-    
+
     with open(article_path, "r") as my_file:
         content = my_file.read()
-    
+
     return render_template("article.html", headline=headline, content=content, author="Martin")
 
 
@@ -136,11 +136,12 @@ def login():
         if result > 0:
             data = cur.fetchone()
             password = data["password"]
+            username = data["username"].strip().lower().title()
 
             if sha256_crypt.verify(password_candidate, password):
                 session["logged_in"] = True
                 session["username"] = email
-                flash("Du är nu inloggad", "success")
+                flash("Välkommen tillbaka " + username + "!", "success")
                 return redirect(url_for("index"))
             else:
                 flash("Ogiltigt lösenord", "danger")
