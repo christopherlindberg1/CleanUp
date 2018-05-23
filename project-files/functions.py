@@ -26,3 +26,5 @@ def get_title_content(a):
         else:
             print("test")
     return (a + ": " + text)
+
+
