@@ -1,9 +1,11 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
 from flask_mysqldb import MySQL
-from wtforms import Form, StringField, TextAreaField, PasswordField, BooleanField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+
+# Nedan importeras funktioner och klasser från egna filer
 from functions import get_headlines, get_title_content
+from forms import Register, Login
 
 app = Flask(__name__)
 
@@ -82,19 +84,9 @@ def article(headline):
     return render_template("article.html", content = get_title_content(titel), headlines = get_headlines(), author="Martin")
 
 
-class Register(Form):
-    email = StringField("E-post", [validators.Email()])
-    password = PasswordField("Lösenord", [validators.DataRequired(), validators.EqualTo("confirm", message="Fel lösenord")])
-    confirm = PasswordField("Bekräfta lösenord")
-
-
-class Login(Form):
-    remember_me = BooleanField("Kom ihåg mig")
-
-
 @app.route("/register/", methods=["GET", "POST"])
 def register():
-    '''Funktion för registrering som skickar data till databas.'''
+    '''Funktion för registrering. Validerar formulär och skriver till databas.'''
     form = Register(request.form)
     if request.method == "POST" and form.validate():
         try:
@@ -117,7 +109,7 @@ def register():
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
-    '''Funktion för inloggning, kontrollerar med data i databas.'''
+    '''Funktion för inloggning. Kontrollerar med data i databas.'''
     form = Login(request.form)
     if request.method == "POST":
 

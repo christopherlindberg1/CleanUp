@@ -1,4 +1,3 @@
-from functools import wraps
 from os import listdir
 
 #Author: Martin
@@ -27,16 +26,3 @@ def get_title_content(a):
         else:
             print("test")
     return (a + ": " + text)
-
-
-'''def is_logged_in(f):
-    Används för att göra vissa sidor synliga för endast inloggade användare
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if "logged_in" in session:
-            return f(*args, **kwargs)
-        else:
-            flash("För att ta del av den här sidan måste du logga in", "primary")
-            return redirect(url_for("login"))
-    return wrap
-'''
