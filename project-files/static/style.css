@@ -205,6 +205,7 @@ p.font-bold {
 p.item-not-done {
 	background-color: #f33;
 	margin-bottom: 0;
+	font-size: 0.8em;
 	color: #eee;
 	height: 1.8em;
 	line-height: 1.8em;
