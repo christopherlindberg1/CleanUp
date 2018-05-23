@@ -80,8 +80,21 @@ def article_list():
 
 @app.route("/static/cleaning_articles/<headline>")
 def article(headline):
+    article_path = "static/cleaning_articles/" + str(headline) + ".txt"
+    
+    with open(article_path, "r") as my_file:
+        content = my_file.read()
+    
+    return render_template("article.html", headline=headline, content=content, author="Martin")
+
+
+
+'''
+@app.route("/static/cleaning_articles/<headline>")
+def article(headline):
     titel = headline
     return render_template("article.html", content = get_title_content(titel), headlines = get_headlines(), author="Martin")
+'''
 
 
 @app.route("/register/", methods=["GET", "POST"])
