@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 \set ON_ERROR_STOP ON
 \c ah8210
 drop database if exists cudb;
@@ -8,7 +7,7 @@ create database cudb;
 	-- Tabell med två kolumner; användarnamn och lösenord.
 CREATE TABLE user_password (
  	--Ser till att användarnamnet är unikt.
-	email VARCHAR(100) PRIMARY KEY,	
+	email VARCHAR(100) PRIMARY KEY,
  	password VARCHAR(100)
 );
 
@@ -127,7 +126,7 @@ create database cudb;
 	-- Tabell med två kolumner; användarnamn och lösenord.
 CREATE TABLE user_password (
  	--Ser till att användarnamnet är unikt.
-	email VARCHAR(100) PRIMARY KEY,	
+	email VARCHAR(100) PRIMARY KEY,
  	password VARCHAR(100)
 );
 
