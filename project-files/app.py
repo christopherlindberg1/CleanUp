@@ -108,7 +108,7 @@ def register():
             password = sha256_crypt.encrypt(str(form.password.data))
 
             cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO user_password(email, password) VALUES (%s, %s)", (email, password))
+            cur.execute("INSERT INTO user_password(username, email, password,) VALUES (%s, %s, %s)", (username, email, password))
             mysql.connection.commit()
             cur.close()
 
