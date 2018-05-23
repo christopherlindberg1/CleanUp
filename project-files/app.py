@@ -102,21 +102,21 @@ def register():
     '''Funktion för registrering. Validerar formulär och skriver till databas.'''
     form = Register(request.form)
     if request.method == "POST" and form.validate():
-        try:
-            username = form.username.data
-            email = form.email.data
-            password = sha256_crypt.encrypt(str(form.password.data))
+        '''try:'''
+        username = form.username.data
+        email = form.email.data
+        password = sha256_crypt.encrypt(str(form.password.data))
 
-            cur = mysql.connection.cursor()
-            cur.execute("INSERT INTO user_password(username, email, password,) VALUES (%s, %s, %s)", (username, email, password))
-            mysql.connection.commit()
-            cur.close()
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO user_password(username, email, password) VALUES(%s, %s, %s)", (username, email, password))
+        mysql.connection.commit()
+        cur.close()
 
-            flash('Du är nu registrerad och kan logga in', 'success')
-            return redirect(url_for("login"))
-        except:
+        flash('Du är nu registrerad och kan logga in', 'success')
+        return redirect(url_for("login"))
+        '''except:
             flash('Det finns redan ett konto registrerat på denna e-post', 'danger')
-            return redirect (url_for("register"))
+            return redirect (url_for("register"))'''
     else:
         return render_template("register.html", form=form, title="Registrera", author="Martin/Christopher")
 
