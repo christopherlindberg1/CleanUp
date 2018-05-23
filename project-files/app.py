@@ -103,6 +103,7 @@ def register():
     form = Register(request.form)
     if request.method == "POST" and form.validate():
         try:
+            username = form.username.data
             email = form.email.data
             password = sha256_crypt.encrypt(str(form.password.data))
 
