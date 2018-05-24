@@ -3,7 +3,7 @@ from os import listdir
 #Author: Martin
 def get_headlines():
     '''Listar namnen på alla text-filer i mappen cleaning_articles, samt tar bort filändelsen.'''
-    headlines = listdir("static/cleaning_articles")
+    headlines = sorted(listdir("static/cleaning_articles"))
     headline_list = []
 
     for headline in headlines:
