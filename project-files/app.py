@@ -103,7 +103,7 @@ def register():
     form = Register(request.form)
     if request.method == "POST" and form.validate():
         try:
-            username = form.username.data
+            username = form.username.data.strip().lower().title()
             email = form.email.data
             password = sha256_crypt.encrypt(str(form.password.data))
 
@@ -136,12 +136,12 @@ def login():
         if result > 0:
             data = cur.fetchone()
             password = data["password"]
-            username = data["username"].strip().lower().title()
+            username = data["username"]
 
             if sha256_crypt.verify(password_candidate, password):
                 session["logged_in"] = True
                 session["username"] = email
-                flash("Välkommen tillbaka " + username + "!", "success")
+                flash("Välkommen " + username + "!", "success")
                 return redirect(url_for("index"))
             else:
                 flash("Ogiltigt lösenord", "danger")
