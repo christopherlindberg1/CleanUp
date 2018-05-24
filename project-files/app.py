@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL
 from passlib.hash import sha256_crypt
 from functools import wraps
+import yaml
 
 # Nedan importeras funktioner och klasser från egna filer
 from functions import get_headlines, get_title_content
@@ -9,12 +10,31 @@ from forms import Register, Login
 
 app = Flask(__name__)
 
+''' Konfigurationen nedan används för att få tillgång till vår
+online MySQL-databas. Lösenord och annan information hämtas från
+en annan fil - db.yaml - som inte pushas upp på git. filen ligger i en mapp två nivåer 
+över denna fil. För att kunna köra applikaitonen med denna konfiguration behövs därför
+en fil med de rätta inloggningsuppgifterna till online-databasen
+'''
+db = yaml.load(open("..\..\db.yaml"))
+app.config['MYSQL_HOST'] = db["mysql_host"]
+app.config['MYSQL_USER'] = db["mysql_user"]
+app.config['MYSQL_PASSWORD'] = db["mysql_password"]
+app.config['MYSQL_DB'] = db["mysql_db"]
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
+
+'''
+Konfigurationen nedan används när applikationen skriver och läser
+till en MySQL-databasserver som finns installerad på datorn
+'''
+'''
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'cudb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+'''
 
 
 mysql = MySQL(app)
