@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<main>
+  <section class="container-fluid">
+      <div class="container container-smaller">
+          <h1 class="display-4">Författa din egen artikel!</h1>
+              <p>
+                <form action="/update/" method="POST">
+              <p>
+                <label for="headline">Vilket objekt ska städas?</label><br>
+                <input type="textarea" id="headline" name="headline">
+              </p>
+              <p>
+                <label for="content">Beskriv hur objektet ska städas! Ange gärna också hur ofta det bör göras.<br>
+                  Gör detta genom att avsluta artikeln med "Frekvens: ", följt av hur regelbundet uppgiften
+                  bör utföras.</label><br>
+                <input type="text" id="content" name="content" rows=10 cols=50>
+              </p>
+              <input type="submit" value="Spara artikel">
+            </form>
+          </p>
+        </div>
+      </section>
+</main>
+
+{% endblock %}
