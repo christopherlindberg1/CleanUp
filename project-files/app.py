@@ -106,7 +106,7 @@ def article(headline):
     with open(article_path, "r") as my_file:
         content = my_file.read()
 
-    return render_template("article.html", headline=headline, content=content, author="Martin")
+    return render_template("article.html", headline=headline, content=content, author="Martin/Christopher")
 
 
 
