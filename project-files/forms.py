@@ -2,9 +2,9 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, BooleanFiel
 
 
 class Register(Form):
-    username = StringField("Användarnamn", [validators.Length(min !=1)])
-    email = StringField("E-post", [validators.Email(min !=1)])
-    password = PasswordField("Lösenord", [validators.DataRequired(min !=10), validators.EqualTo("confirm", message="Fel lösenord")])
+    username = StringField("Användarnamn", [validators.DataRequired()])
+    email = StringField("E-post", [validators.Email()])
+    password = PasswordField("Lösenord", [validators.Length(min=10), validators.EqualTo("confirm", message="Fel lösenord")])
     confirm = PasswordField("Bekräfta lösenord")
 
 
