@@ -6,6 +6,36 @@
   <section class="container-fluid">
       <div class="container container-smaller">
           <h1 class="display-4">Författa din egen artikel!</h1>
+          {% from "includes/_formhelpers.html" import render_field %}
+      </div>
+  </section>
+
+  <section class="container-fluid">
+    <div class="container container-smaller">
+      <form method="POST" action="">
+        <div class="form-group">
+          <p>Beskriv hur objektet ska städas! Ange gärna också hur ofta det bör göras.
+            Gör detta genom att avsluta artikeln med "Frekvens: ", följt av hur regelbundet uppgiften
+            bör utföras.</p>
+          {{ render_field(form.title, class_="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ render_field(form.body, class_="form-control") }}
+        </div>
+        <p>
+          <input class="btn btn-primary" type="submit" value="Spara artikel">
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+
+{% endblock %}
+
+<!-- <main>
+  <section class="container-fluid">
+      <div class="container container-smaller">
+          <h1 class="display-4">Författa din egen artikel!</h1>
               <p>
                 <form action="/update/" method="POST">
               <p>
@@ -23,6 +53,4 @@
           </p>
         </div>
       </section>
-</main>
-
-{% endblock %}
+</main> -->

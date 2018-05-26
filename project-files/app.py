@@ -6,7 +6,7 @@ import yaml
 
 # Nedan importeras funktioner och klasser från egna filer
 from functions import get_headlines, get_title_content
-from forms import Register, Login
+from forms import Register, Login, ArticleForm
 
 app = Flask(__name__)
 
@@ -57,10 +57,31 @@ def is_logged_in(f):
 def index():
     return render_template("index.html", author="Christopher")
 
+# @app.route("/edit/")
+# def edit_article():
+#     return render_template("edit.html", author="Martin")
 
-@app.route("/edit/")
-def edit_article():
-    return render_template("edit.html", author="Martin")
+@app.route("/edit/", methods=['GET', 'POST'])
+@is_logged_in
+def add_article():
+    form = ArticleForm(request.form)
+    if request.method == 'POST' and form.validate():
+        title = form.title.data
+        body = form.body.data
+
+        cur = mysql.connection.cursor()
+
+        cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
+
+        mysql.connection.commit()
+
+        cur.close()
+
+        flash('Artikeln har sparats!', 'success')
+
+        return redirect(url_for('article_list'))
+
+    return render_template('edit.html', form=form, author="Martin/Josef")
 
 
 @app.route("/update/", methods=["POST"])
