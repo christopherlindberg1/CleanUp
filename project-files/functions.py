@@ -54,3 +54,31 @@ def get_tool_content(a):
         else:
             print("test")
     return (text)
+
+
+#Author: Martin
+def get_detergent_headlines():
+    '''Listar namnen på alla text-filer i mappen detergent_articles, samt tar bort filändelsen.'''
+    headings = sorted(listdir("static/detergent_articles"))
+    heading_list = []
+
+    for heading in headings:
+        heading = heading[:-4]
+        heading_list.append(heading)
+    return heading_list
+
+
+#Author: Martin
+def get_detergent_content(a):
+    '''Skapar utifrån textfilerna en väg, en läs-variabel och en variabel för text-filens innehåll.'''
+    heading = listdir("static/detergent_articles")
+    heading_list = []
+    for heading in headings:
+        if heading == a + ".txt":
+            path = "static/detergent_articles/" + heading
+            fill = days_file = open(path,'r')
+            text = fill.read()
+            fill.close()
+        else:
+            print("test")
+    return (text)

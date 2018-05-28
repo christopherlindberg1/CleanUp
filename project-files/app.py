@@ -5,7 +5,7 @@ from functools import wraps
 import yaml
 
 # Nedan importeras funktioner och klasser från egna filer
-from functions import get_headlines, get_title_content, get_tool_headlines, get_tool_content
+from functions import get_headlines, get_title_content, get_tool_headlines, get_tool_content, get_detergent_headlines, get_detergent_content
 from forms import Register, Login, ArticleForm
 
 app = Flask(__name__)
@@ -140,8 +140,25 @@ def tool_article(header):
 
     with open(article_path, "r") as my_file:
         subject = my_file.read()
+        my_file.close()
 
     return render_template("tool_article.html", header=header, subject=subject, author="Martin")
+
+
+@app.route("/detergent_list/")
+def detergent_list():
+    return render_template("detergent_list.html", title="Städmedel", headings=get_detergent_headlines(), author="Martin")
+
+
+@app.route("/static/detergent_articles/<heading>")
+def detergent_article(heading):
+    article_path = "static/detergent_articles/" + str(heading) + ".txt"
+
+    with open(article_path, "r") as my_file:
+        text = my_file.read()
+        my_file.close()
+
+    return render_template("detergent_article.html", heading=heading, text=text, author="Martin")
 
 
 '''
