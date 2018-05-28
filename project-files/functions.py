@@ -28,7 +28,6 @@ def get_title_content(a):
     return (text)
 
 
-    '''Nedan skickas verktygsartiklarna'''
     #Author: Martin
     def get_tool_headlines():
         '''Listar namnen på alla text-filer i mappen tool_articles, samt tar bort filändelsen.'''

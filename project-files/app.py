@@ -10,11 +10,11 @@ from forms import Register, Login, ArticleForm
 
 app = Flask(__name__)
 
-''' Konfigurationen nedan används för att få tillgång till vår
-online MySQL-databas. Lösenord och annan information hämtas från
-en annan fil - db.yaml - som inte pushas upp på git. filen ligger i en mapp två nivåer
-över denna fil. För att kunna köra applikaitonen med denna konfiguration behövs därför
-en fil med de rätta inloggningsuppgifterna till online-databasen
+''' Konfigurationen nedan används för att få tillgång till vår online MySQL-
+databas. Lösenord och annan information hämtas från en annan fil - db.yaml - som
+inte pushas upp på git. filen ligger i en mapp två nivåer över denna fil. För
+att kunna köra applikaitonen med denna konfiguration behövs därför en fil med de
+rätta inloggningsuppgifterna till online-databasen
 '''
 #db = yaml.load(open("..\..\db.yaml"))
 db = yaml.load(open("../../db.yaml"))
@@ -28,8 +28,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 '''
 Konfigurationen nedan används när applikationen skriver och läser
 till en MySQL-databasserver som finns installerad på datorn
-'''
-'''
+
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
@@ -117,7 +116,7 @@ def cleaning_tips():
 
 @app.route("/article_list/")
 def article_list():
-    return render_template("article_list.html", title="Lexikon A-Ö", headlines = get_headlines(), author="Martin")
+    return render_template("article_list.html", title="Lexikon A-Ö", headlines=get_headlines(), author="Martin")
 
 
 @app.route("/static/cleaning_articles/<headline>")
