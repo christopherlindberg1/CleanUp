@@ -84,6 +84,11 @@ p.lead {
 footer {
 	background-color: #222;
 	padding: 1em 0 0;
+	clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;
 }
 
 ul.foot-col {
@@ -118,6 +123,13 @@ footer p.text-center {
 	font-size: 0.9em;
 }
 
+.container-fluid {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+}
 
 /***** index.html *****/
 h1.home {
