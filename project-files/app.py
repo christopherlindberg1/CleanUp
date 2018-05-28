@@ -129,6 +129,15 @@ def article(headline):
 
     return render_template("article.html", headline=headline, content=content, author="Martin/Christopher")
 
+@app.route("/static/tool_articles/<headline>")
+def article(headline):
+    article_path = "static/tool_articles/" + str(headline) + ".txt"
+
+    with open(article_path, "r") as my_file:
+        content = my_file.read()
+
+    return render_template("tool_article.html", headline=headline, content=content, author="Martin/Christopher")
+
 
 
 '''
