@@ -30,7 +30,7 @@ def get_title_content(a):
 
     '''Nedan skickas verktygsartiklarna'''
     #Author: Martin
-    def get_headlines():
+    def get_tool_headlines():
         '''Listar namnen på alla text-filer i mappen tool_articles, samt tar bort filändelsen.'''
         headlines = sorted(listdir("static/tool_articles"))
         headline_list = []
@@ -42,7 +42,7 @@ def get_title_content(a):
 
 
     #Author: Martin
-    def get_title_content(a):
+    def get_tool_content(a):
         '''Skapar utifrån textfilerna en väg, en läs-variabel och en variabel för text-filens innehåll.'''
         headlines = listdir("static/tool_articles")
         headline_list = []

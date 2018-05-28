@@ -129,15 +129,20 @@ def article(headline):
 
     return render_template("article.html", headline=headline, content=content, author="Martin/Christopher")
 
+
+@app.route("/tool_list/")
+def tool_list():
+    return render_template("tool_list.html", title="Verktyg", headers=get_tool_headlines(), author="Martin")
+
+
 @app.route("/static/tool_articles/<headline>")
-def article(headline):
+def tool_article(headline):
     article_path = "static/tool_articles/" + str(headline) + ".txt"
 
     with open(article_path, "r") as my_file:
         content = my_file.read()
 
-    return render_template("tool_article.html", headline=headline, content=content, author="Martin/Christopher")
-
+    return render_template("tool_article.html", header=header, subject=subject, author="Martin")
 
 
 '''
