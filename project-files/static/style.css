@@ -84,6 +84,7 @@ p.lead {
 footer {
 	background-color: #222;
 	padding: 1em 0 0;
+	overflow: hidden;
 }
 
 ul.foot-col {
