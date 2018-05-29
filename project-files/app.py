@@ -10,13 +10,13 @@ from forms import Register, Login, ArticleForm
 
 app = Flask(__name__)
 
-''' Konfigurationen nedan används för att få tillgång till vår online MySQL-
+'''
+Konfigurationen nedan används för att få tillgång till vår online MySQL-
 databas. Lösenord och annan information hämtas från en annan fil - db.yaml - som
 inte pushas upp på git. filen ligger i en mapp två nivåer över denna fil. För
 att kunna köra applikaitonen med denna konfiguration behövs därför en fil med de
 rätta inloggningsuppgifterna till online-databasen
 '''
-#db = yaml.load(open("..\..\db.yaml"))
 db = yaml.load(open("../../db.yaml"))
 app.config['MYSQL_HOST'] = db["mysql_host"]
 app.config['MYSQL_USER'] = db["mysql_user"]
