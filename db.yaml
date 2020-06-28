@@ -1,0 +1,6 @@
+# Information som används för att få tillgång till vår online MySQL-databas
+
+mysql_host: 'sql7.freemysqlhosting.net'
+mysql_user: 'sql7239655'
+mysql_password: 'YdygKrUDcl'
+mysql_db: 'sql7239655'
