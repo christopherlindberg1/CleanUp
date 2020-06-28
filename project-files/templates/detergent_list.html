@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <main>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <h1 class="display-4">Städmedel</h1>
+                <br>
+                <p>
+                    <ul class="list-group">
+                        {% for heading in headings: %}
+                            <li class="list-group-item">
+                            <a href="/static/detergent_articles/{{ heading }}">{{ heading }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

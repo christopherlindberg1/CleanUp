@@ -1,0 +1,4 @@
+Öppna den post som inte än har öppnats. 
+Sortera all post och återvinn den post som inte behöver behållas.
+
+Frekvens: Veckovis

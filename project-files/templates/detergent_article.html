@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <main>
+        <section class="container-fluid">
+            <div class="container container-smaller">
+                <h1 class="display-4">{{ heading }}</h1>
+                <p>
+                    {{ text }}
+                </p>
+                <p>
+                    <a href="/detergent_list">Tillbaka till listan</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
